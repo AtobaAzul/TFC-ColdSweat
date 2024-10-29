@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "ABA",
+    " B ",
+    " B "
+  ],
+  "key":
+  {
+    "B":
+    {
+      "tag": "forge:dusts/redstone"
+    },
+    "A":
+    {
+      "item": "tfc:metal/sheet/gold"
+    }
+  },
+  "result":
+  {
+    "item": "cold_sweat:thermometer",
+    "count": 1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "AA",
+    "BB"
+  ],
+  "key":
+  {
+    "A":
+    {
+      "tag": "tfc:high_quality_cloth"
+    },
+    "B":
+    {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result":
+  {
+    "item": "cold_sweat:thermolith",
+    "count": 1
+  }
+}
