@@ -5,7 +5,7 @@
   "refmap": "tfc_coldsweat.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-
+    "WorldHelperMixin"
   ],
   "injectors": {
     "defaultRequire": 1
