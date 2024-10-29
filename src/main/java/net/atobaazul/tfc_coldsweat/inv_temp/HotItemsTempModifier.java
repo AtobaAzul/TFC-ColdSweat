@@ -16,7 +16,7 @@ public class HotItemsTempModifier extends InventoryItemsTempModifier {
         if (entity instanceof Player) {
             ((Player) entity).getInventory().items.forEach(item -> {
                 if (HeatCapability.getTemperature(item) > 0) {
-                    totalHeat[0] = (float) (totalHeat[0] + Temperature.convert(HeatCapability.getTemperature(item), Temperature.Units.C, Temperature.Units.MC, false)/30);
+                    totalHeat[0] = (float) (totalHeat[0] + Temperature.convert(HeatCapability.getTemperature(item), Temperature.Units.C, Temperature.Units.MC, false)/40);
                 }
             });
         }
