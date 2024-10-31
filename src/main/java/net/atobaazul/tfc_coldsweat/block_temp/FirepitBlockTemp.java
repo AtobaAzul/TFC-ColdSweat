@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class FirepitBlockTemp extends BlockTemp
 {
     public FirepitBlockTemp()
-    {   super();
+    {   super(TFCBlocks.FIREPIT.get());
     }
 
     @Override
