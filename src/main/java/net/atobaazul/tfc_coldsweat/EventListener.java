@@ -62,7 +62,8 @@ public class EventListener {
         event.register(new PotBlockTemp());
         event.register(new SpringWaterBlockTemp());
         event.register(new TFCTorchBlockTemp());
-
+        event.register(new TFCMagmaBlockTemp());
+        event.register(new SeaIceBlockTemp());
         if (TFCColdSweat.firmalifeEnabled != null) {
 
             event.register(new BottomOvenBlockTemp());
