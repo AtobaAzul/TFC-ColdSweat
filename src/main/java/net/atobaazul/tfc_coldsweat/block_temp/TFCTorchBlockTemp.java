@@ -19,16 +19,16 @@ public class TFCTorchBlockTemp extends BlockTemp
     @Override
     public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance)
     {
-        return CSMath.blend(Temperature.convert(10.0, Temperature.Units.C, Temperature.Units.MC, false), 0, distance, 0.5, 7);
+        return CSMath.blend(Temperature.convert(2.5, Temperature.Units.C, Temperature.Units.MC, false), 0, distance, 0.5, 4);
     }
 
     @Override
     public double maxEffect() {
-        return Temperature.convert(37.0, Temperature.Units.C, Temperature.Units.MC, false);
+        return Temperature.convert(15.0, Temperature.Units.C, Temperature.Units.MC, false);
     }
 
     @Override
     public double maxTemperature() {
-        return Temperature.convert(30, Temperature.Units.C, Temperature.Units.MC, true);
+        return Temperature.convert(20, Temperature.Units.C, Temperature.Units.MC, true);
     }
 }
