@@ -12,11 +12,15 @@ import net.atobaazul.tfc_coldsweat.block_temp.*;
 import net.atobaazul.tfc_coldsweat.inv_temp.HotItemsTempModifier;
 import net.atobaazul.tfc_coldsweat.modifier.TFCSeasonTempModifier;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+
+import static com.momosoftworks.coldsweat.common.capability.handler.EntityTempManager.isTemperatureEnabled;
 
 @Mod.EventBusSubscriber
 public class EventListener {
@@ -32,24 +36,24 @@ public class EventListener {
         }
     }
 
+    //Due to priority reasons, this is a seperate event at a lower priority than the one above.
     @SubscribeEvent()
-    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.getEntity() instanceof Player && !event.getEntity().level().isClientSide) {
-            Temperature.removeModifiers(event.getEntity(), Temperature.Trait.WORLD, mod -> mod instanceof BiomeTempModifier);
-            Temperature.removeModifiers(event.getEntity(), Temperature.Trait.WORLD, mod -> mod instanceof UndergroundTempModifier);
+    public static void onGatherDefaultTempModifiers(GatherDefaultTempModifiersEvent event) {
+        if (event.getEntity() instanceof Player) {
+            event.getModifiers().removeIf(modifier ->
+                    modifier instanceof BiomeTempModifier
+                            || modifier instanceof UndergroundTempModifier);
         }
     }
 
     @SubscribeEvent
-    public static void registerTempModifiers(TempModifierRegisterEvent event)
-    {
+    public static void registerTempModifiers(TempModifierRegisterEvent event) {
         event.register(new ResourceLocation(TFCColdSweat.MODID, "season"), TFCSeasonTempModifier::new);
         event.register(new ResourceLocation(TFCColdSweat.MODID, "hot_items"), HotItemsTempModifier::new);
     }
 
     @SubscribeEvent
-    public static void registerBlockTemps(BlockTempRegisterEvent event)
-    {
+    public static void registerBlockTemps(BlockTempRegisterEvent event) {
         event.register(new BlastFurnaceBlockTemp());
         event.register(new BloomeryBlockTemp());
         event.register(new CharcoalForgeBlockTemp());
