@@ -5,6 +5,7 @@
   "refmap": "tfc_coldsweat.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "IceBoxBlockEntityMixin",
     "WorldHelperMixin"
   ],
   "injectors": {
