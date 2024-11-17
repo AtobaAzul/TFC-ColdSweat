@@ -24,7 +24,11 @@ public class SunlightTempModifier extends TempModifier {
             float dayTime = (level.getDayTime() % 24000L);
             double dayTimePercent = 0.5 * Math.sin(dayTime * (Math.PI) / 12000) + 0.5;
 
-            if (canSeeSky(level, player.blockPosition().above(), level.getMaxBuildHeight()) && !WorldHelper.isRainingAt(level, livingEntity.blockPosition()) && !player.getItemBySlot(EquipmentSlot.HEAD).is(TFCColdSweat.sunlightProtection)) {
+            if (canSeeSky(level, player.blockPosition().above(), level.getMaxBuildHeight())
+                    && !WorldHelper.isRainingAt(level, livingEntity.blockPosition())
+                    && !(player.getItemBySlot(EquipmentSlot.HEAD).is(TFCColdSweat.sunlightProtection)
+                    || player.getItemBySlot(EquipmentSlot.MAINHAND).is(TFCColdSweat.sunlightProtection)
+                    || player.getItemBySlot(EquipmentSlot.OFFHAND).is(TFCColdSweat.sunlightProtection))) {
                 return temp -> temp + (Temperature.convert(5, Temperature.Units.C, Temperature.Units.MC, true) * dayTimePercent);
             } else {
                 return temp -> temp;
