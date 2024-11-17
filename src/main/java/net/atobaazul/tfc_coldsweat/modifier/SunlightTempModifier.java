@@ -18,8 +18,7 @@ public class SunlightTempModifier extends TempModifier {
         Level level = livingEntity.level();
         float dayTime = (level.getDayTime() % 24000L);
         double dayTimePercent =  0.5*Math.sin(dayTime*(Math.PI)/12000)+0.5;
-        System.out.println(dayTime);
-        System.out.println(dayTimePercent);
+
         if (canSeeSky(level, livingEntity.blockPosition().above(), level.getMaxBuildHeight()) && !WorldHelper.isRainingAt(level, livingEntity.blockPosition())) {
 
             return temp -> temp + (Temperature.convert(5, Temperature.Units.C, Temperature.Units.MC, true)* dayTimePercent);
