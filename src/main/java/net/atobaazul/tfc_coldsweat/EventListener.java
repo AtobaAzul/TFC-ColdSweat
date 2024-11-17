@@ -10,7 +10,8 @@ import com.momosoftworks.coldsweat.api.util.Placement;
 import com.momosoftworks.coldsweat.api.util.Temperature;
 import net.atobaazul.tfc_coldsweat.block_temp.*;
 import net.atobaazul.tfc_coldsweat.inv_temp.HotItemsTempModifier;
-import net.atobaazul.tfc_coldsweat.modifier.TFCSeasonTempModifier;
+import net.atobaazul.tfc_coldsweat.modifier.ClimateTempModifier;
+import net.atobaazul.tfc_coldsweat.modifier.SunlightTempModifier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -19,7 +20,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 @Mod.EventBusSubscriber
 public class EventListener {
-    public final static TempModifier TFCSeasonModifier = new TFCSeasonTempModifier();
+    public final static TempModifier TFCSeasonModifier = new ClimateTempModifier();
+    public static final TempModifier TFCSunlightModifier = new SunlightTempModifier();
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void defineDefaultModifiers(GatherDefaultTempModifiersEvent event) {
@@ -27,6 +29,7 @@ public class EventListener {
             if (CompatManager.TFC_ENABLED != null) {
                 if (event.getTrait() == Temperature.Trait.WORLD) {
                     event.addModifier(TFCSeasonModifier, Placement.Duplicates.BY_CLASS, Placement.BEFORE_FIRST);
+                    event.addModifier(TFCSunlightModifier, Placement.Duplicates.BY_CLASS, Placement.BEFORE_FIRST);
                     event.addModifier(new HotItemsTempModifier(), Placement.Duplicates.BY_CLASS, Placement.BEFORE_FIRST);
                 }
             }
@@ -48,7 +51,8 @@ public class EventListener {
     @SubscribeEvent
     public static void registerTempModifiers(TempModifierRegisterEvent event) {
         if (CompatManager.TFC_ENABLED != null) {
-            event.register(new ResourceLocation(TFCColdSweat.MODID, "season"), TFCSeasonTempModifier::new);
+            event.register(new ResourceLocation(TFCColdSweat.MODID, "season"), ClimateTempModifier::new);
+            event.register(new ResourceLocation(TFCColdSweat.MODID, "sunlight"), SunlightTempModifier::new);
             event.register(new ResourceLocation(TFCColdSweat.MODID, "hot_items"), HotItemsTempModifier::new);
         }
     }

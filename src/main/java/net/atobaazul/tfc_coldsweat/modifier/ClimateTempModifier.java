@@ -5,9 +5,10 @@ import com.momosoftworks.coldsweat.api.util.Temperature;
 import net.dries007.tfc.util.climate.Climate;
 import net.minecraft.world.entity.LivingEntity;
 import java.util.function.Function;
+import static com.momosoftworks.coldsweat.util.world.WorldHelper.canSeeSky;
 
-public class TFCSeasonTempModifier extends TempModifier {
-    public TFCSeasonTempModifier() {}
+public class ClimateTempModifier extends TempModifier {
+    public ClimateTempModifier() {}
 
     @Override
     public Function<Double, Double> calculate(LivingEntity livingEntity, Temperature.Trait trait) {
