@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 public class BloomeryBlockTemp extends BlockTemp
 {
     public BloomeryBlockTemp()
-    {   super(TFCBlocks.BLOOMERY.get());
+    {   super(TFCBlocks.BLOOMERY.get(), TFCBlocks.MOLTEN.get()); //putting molten here because it just checks for State.
     }
 
     @Override
