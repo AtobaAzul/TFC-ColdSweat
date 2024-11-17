@@ -1,6 +1,10 @@
 package net.atobaazul.tfc_coldsweat;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -15,6 +19,7 @@ public class TFCColdSweat {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "tfc_coldsweat";
 
+    public static final TagKey<Item> sunlightProtection = ItemTags.create(new ResourceLocation(MODID, "protects_against_sunlight"));
 
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
