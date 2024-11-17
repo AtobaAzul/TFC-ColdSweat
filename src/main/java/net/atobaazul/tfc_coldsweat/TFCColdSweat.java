@@ -13,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLLoader;
 import net.minecraftforge.fml.loading.moddiscovery.ModFileInfo;
+import net.atobaazul.tfc_coldsweat.CompatManager;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -22,8 +23,6 @@ public class TFCColdSweat {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "tfc_coldsweat";
 
-    public static final ModFileInfo firmalifeEnabled = FMLLoader.getLoadingModList().getModFileById("firmalife");
-    public static final ModFileInfo castirongrillEnabled = FMLLoader.getLoadingModList().getModFileById("castirongrill");
 
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
