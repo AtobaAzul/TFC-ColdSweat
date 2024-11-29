@@ -144,7 +144,7 @@ dependencies {
     implementation(fg.deobf("curse.maven:jei-238222:4712868"))
     implementation(fg.deobf("curse.maven:terrafirmacraft-302973:5571484"))
     implementation(fg.deobf("curse.maven:patchouli-306770:4966125"))
-    implementation fg.deobf("curse.maven:cold-sweat-506194:5874633")
+    implementation fg.deobf("curse.maven:cold-sweat-506194:5946053")
     implementation fg.deobf("curse.maven:curios-309927:5367944-sources-5367945")
     implementation fg.deobf("curse.maven:firmalife-453394:5775257")
     runtimeOnly(fg.deobf("curse.maven:jade-324717:5776962"))
