@@ -1,6 +1,6 @@
 package net.atobaazul.tfc_coldsweat.mixin;
 
-import com.momosoftworks.coldsweat.util.compat.CompatManager;
+import com.momosoftworks.coldsweat.compat.CompatManager;
 import com.momosoftworks.coldsweat.util.world.WorldHelper;
 import net.dries007.tfc.util.EnvironmentHelpers;
 import net.dries007.tfc.util.climate.Climate;
