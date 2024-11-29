@@ -150,11 +150,8 @@ dependencies {
     runtimeOnly(fg.deobf("curse.maven:jade-324717:5776962"))
     implementation fg.deobf("curse.maven:tfc-cast-iron-grill-694279:5677434")
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
-
-
-
-
-
+    implementation fg.deobf("curse.maven:firmaciv-714158:5737719")
+    implementation fg.deobf("curse.maven:alekiships-1068445:5815914")
 
 
 

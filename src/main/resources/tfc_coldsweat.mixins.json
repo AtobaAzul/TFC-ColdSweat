@@ -7,11 +7,13 @@
   "mixins": [
     "FilledWaterSkinItemMixin",
     "IceBoxBlockEntityMixin",
-    "WorldHelperMixin"
+    "WorldHelperMixin",
+    "compat.AlekishipsWorldHelperMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
-  ]
+  ],
+  "plugin": "net.atobaazul.tfc_coldsweat.mixin_plugin.TFCColdSweatMixinPlugin"
 }
