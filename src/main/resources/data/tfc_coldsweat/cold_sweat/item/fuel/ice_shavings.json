@@ -1,7 +1,7 @@
 {
   "required_mods": ["firmalife"],
   "type": "icebox",
-  "fuel": 16,
+  "fuel": 48,
   "data": {
     "items": [
       "firmalife:ice_shavings"
