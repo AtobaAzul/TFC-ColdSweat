@@ -29,7 +29,7 @@ public class SunlightTempModifier extends TempModifier {
                     && !(player.getItemBySlot(EquipmentSlot.HEAD).is(TFCColdSweat.sunlightProtection)
                     || player.getItemBySlot(EquipmentSlot.MAINHAND).is(TFCColdSweat.sunlightProtection)
                     || player.getItemBySlot(EquipmentSlot.OFFHAND).is(TFCColdSweat.sunlightProtection))) {
-                return temp -> temp + (Temperature.convert(5, Temperature.Units.C, Temperature.Units.MC, true) * dayTimePercent);
+                return temp -> temp + (Temperature.convert(7.5, Temperature.Units.C, Temperature.Units.MC, true) * dayTimePercent);
             } else {
                 return temp -> temp;
             }
