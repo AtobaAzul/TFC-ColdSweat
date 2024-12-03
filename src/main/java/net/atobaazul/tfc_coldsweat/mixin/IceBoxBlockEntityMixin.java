@@ -61,8 +61,8 @@ public abstract class IceBoxBlockEntityMixin extends HearthBlockEntity {
             }
         }
 
-        if (ticksExisted % (int) (10 / Math.max(1, ConfigSettings.TEMP_RATE.get())) == 0) {
-            if (hasFoodItem) setFuel((int) (getFuel() - Math.ceil(stacksize*0.0125)));
+        if (ticksExisted % (int) (20 / Math.max(1, ConfigSettings.TEMP_RATE.get())) == 0) {
+            if (hasFoodItem) setFuel((getFuel() - 1));
         }
 
     }
