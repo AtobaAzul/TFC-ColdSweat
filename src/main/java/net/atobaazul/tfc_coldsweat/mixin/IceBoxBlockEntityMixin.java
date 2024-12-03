@@ -48,7 +48,7 @@ public abstract class IceBoxBlockEntityMixin extends HearthBlockEntity {
             if (!stack.isEmpty() && stack.is(TFCTags.Items.FOODS)) {
                 hasFoodItem = true;
                 stacksize = stacksize + stack.getCount();
-            };
+            }
 
             if (getFuel() > 0 && this.openersCounter.getOpenerCount() == 0) {
                 if (!FoodCapability.hasTrait(stack, TFCColdSweatFoodTraits.CHILLED)) {

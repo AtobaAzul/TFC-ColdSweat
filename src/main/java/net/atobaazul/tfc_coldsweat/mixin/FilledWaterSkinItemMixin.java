@@ -19,7 +19,7 @@ public class FilledWaterSkinItemMixin extends Item {
         super(pProperties);
     }
 
-    @Inject(method="finishUsingItem", at=@At("TAIL"))
+    @Inject(method = "finishUsingItem", at = @At("TAIL"))
     private void tfc_coldsweat$finishUsingItem(ItemStack stack, Level level, LivingEntity entity, CallbackInfoReturnable<ItemStack> cir) {
         if (entity instanceof Player player && player.getFoodData() instanceof TFCFoodData foodData) {
             foodData.addThirst(10f);

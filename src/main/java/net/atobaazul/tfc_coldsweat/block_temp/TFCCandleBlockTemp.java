@@ -39,7 +39,7 @@ public class TFCCandleBlockTemp extends BlockTemp {
 
     @Override
     public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance) {
-        return CSMath.blend(Temperature.convert(state.getValue(LIT) ? (2.5/4) * state.getValue(CANDLES) : 0, Temperature.Units.C, Temperature.Units.MC, false), 0, distance, 0.5, 4);
+        return CSMath.blend(Temperature.convert(state.getValue(LIT) ? (2.5 / 4) * state.getValue(CANDLES) : 0, Temperature.Units.C, Temperature.Units.MC, false), 0, distance, 0.5, 4);
     }
 
     @Override

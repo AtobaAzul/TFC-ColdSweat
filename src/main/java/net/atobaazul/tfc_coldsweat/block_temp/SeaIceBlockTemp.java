@@ -9,15 +9,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class SeaIceBlockTemp extends BlockTemp
-{
-    public SeaIceBlockTemp()
-    {   super(TFCBlocks.SEA_ICE.get());
+public class SeaIceBlockTemp extends BlockTemp {
+    public SeaIceBlockTemp() {
+        super(TFCBlocks.SEA_ICE.get());
     }
 
     @Override
-    public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance)
-    {
+    public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance) {
         return CSMath.blend(-0.15, 0, distance, 0.5, 7);
     }
 

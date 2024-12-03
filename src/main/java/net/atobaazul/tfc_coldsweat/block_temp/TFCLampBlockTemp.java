@@ -9,21 +9,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+
 import static net.dries007.tfc.common.blocks.devices.LampBlock.LIT;
 
 public class TFCLampBlockTemp extends BlockTemp {
 
 
     public TFCLampBlockTemp() {
-        super(TFCBlocks.METALS.get(Metal.Default.BISMUTH_BRONZE).get(Metal.BlockType.LAMP).get(),
-                TFCBlocks.METALS.get(Metal.Default.BLACK_BRONZE).get(Metal.BlockType.LAMP).get(),
-                TFCBlocks.METALS.get(Metal.Default.BRONZE).get(Metal.BlockType.LAMP).get(),
-                TFCBlocks.METALS.get(Metal.Default.COPPER).get(Metal.BlockType.LAMP).get(),
-                TFCBlocks.METALS.get(Metal.Default.WROUGHT_IRON).get(Metal.BlockType.LAMP).get(),
-                TFCBlocks.METALS.get(Metal.Default.STEEL).get(Metal.BlockType.LAMP).get(),
-                TFCBlocks.METALS.get(Metal.Default.BLUE_STEEL).get(Metal.BlockType.LAMP).get(),
-                TFCBlocks.METALS.get(Metal.Default.RED_STEEL).get(Metal.BlockType.LAMP).get()
-        );
+        super(TFCBlocks.METALS.get(Metal.Default.BISMUTH_BRONZE).get(Metal.BlockType.LAMP).get(), TFCBlocks.METALS.get(Metal.Default.BLACK_BRONZE).get(Metal.BlockType.LAMP).get(), TFCBlocks.METALS.get(Metal.Default.BRONZE).get(Metal.BlockType.LAMP).get(), TFCBlocks.METALS.get(Metal.Default.COPPER).get(Metal.BlockType.LAMP).get(), TFCBlocks.METALS.get(Metal.Default.WROUGHT_IRON).get(Metal.BlockType.LAMP).get(), TFCBlocks.METALS.get(Metal.Default.STEEL).get(Metal.BlockType.LAMP).get(), TFCBlocks.METALS.get(Metal.Default.BLUE_STEEL).get(Metal.BlockType.LAMP).get(), TFCBlocks.METALS.get(Metal.Default.RED_STEEL).get(Metal.BlockType.LAMP).get());
     }
 
     @Override

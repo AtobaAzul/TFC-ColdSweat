@@ -1,7 +1,6 @@
 package net.atobaazul.tfc_coldsweat.block_temp;
 
 
-
 import com.eerussianguy.firmalife.common.blockentities.OvenBottomBlockEntity;
 import com.eerussianguy.firmalife.common.blocks.FLBlocks;
 import com.eerussianguy.firmalife.common.blocks.OvenType;
@@ -15,21 +14,18 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 //i'm gonna lose it why are all the bototm ovens different blocks instead of 2 blocks with blcosktate textures
-public class BottomOvenBlockTemp extends BlockTemp
-{
+public class BottomOvenBlockTemp extends BlockTemp {
 
-    public BottomOvenBlockTemp()
-    {
+    public BottomOvenBlockTemp() {
         super(FLBlocks.CURED_OVEN_BOTTOM.get(OvenType.BRICK).get(), FLBlocks.CURED_OVEN_BOTTOM.get(OvenType.RUSTIC).get(), FLBlocks.CURED_OVEN_BOTTOM.get(OvenType.STONE).get(), FLBlocks.CURED_OVEN_BOTTOM.get(OvenType.TILE).get());
     }
 
     @Override
-    public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance)
-    {
+    public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance) {
         BlockEntity be = level.getBlockEntity(pos);
 
         if (be instanceof OvenBottomBlockEntity) {
-            return CSMath.blend(Temperature.convert(((OvenBottomBlockEntity) be).getTemperature(), Temperature.Units.C, Temperature.Units.MC, true), 0, distance, 0.5, 16)/30;
+            return CSMath.blend(Temperature.convert(((OvenBottomBlockEntity) be).getTemperature(), Temperature.Units.C, Temperature.Units.MC, true), 0, distance, 0.5, 16) / 30;
         }
         return 0.0;
     }

@@ -40,7 +40,7 @@ public class EventListener {
 
         tempPercent = Math.min(tempPercent, 2);
         return baseDuration * tempPercent;
-    };
+    }
 
     @SubscribeEvent
     public static void onSpawn(EntityJoinLevelEvent event) {

@@ -15,8 +15,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Supplier;
 
-public class TFCColdSweatMixinPlugin implements IMixinConfigPlugin
-{
+public class TFCColdSweatMixinPlugin implements IMixinConfigPlugin {
     private static final String MIXIN_PACKAGE = "net.atobaazul.tfc_coldsweat.mixin.";
     private static final String COMPAT_MIXIN_PACKAGE = "net.atobaazul.tfc_coldsweat.mixin.compat.";
 
@@ -27,48 +26,41 @@ public class TFCColdSweatMixinPlugin implements IMixinConfigPlugin
     );
 
     @Override
-    public void onLoad(String mixinPackage)
-    {
+    public void onLoad(String mixinPackage) {
 
     }
 
     @Override
-    public String getRefMapperConfig()
-    {
+    public String getRefMapperConfig() {
         return null;
     }
 
     @Override
-    public boolean shouldApplyMixin(String targetClassName, String mixinClassName)
-    {
+    public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
         return CONDITIONS.getOrDefault(mixinClassName, () -> true).get();
     }
 
     @Override
-    public void acceptTargets(Set<String> myTargets, Set<String> otherTargets)
-    {
+    public void acceptTargets(Set<String> myTargets, Set<String> otherTargets) {
 
     }
 
     @Override
-    public List<String> getMixins()
-    {
+    public List<String> getMixins() {
         return null;
     }
 
     @Override
-    public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo)
-    {
+    public void preApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
 
     }
 
     @Override
-    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo)
-    {
+    public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
 
     }
 
-    public static boolean modLoaded(String modId)
-    {   return FMLLoader.getLoadingModList().getModFileById(modId) != null;
+    public static boolean modLoaded(String modId) {
+        return FMLLoader.getLoadingModList().getModFileById(modId) != null;
     }
 }

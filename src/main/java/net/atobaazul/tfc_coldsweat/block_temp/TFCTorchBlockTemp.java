@@ -8,17 +8,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.FluidState;
 
-public class TFCTorchBlockTemp extends BlockTemp
-{
-    public TFCTorchBlockTemp()
-    {   super(TFCBlocks.TORCH.get(), TFCBlocks.WALL_TORCH.get());
+public class TFCTorchBlockTemp extends BlockTemp {
+    public TFCTorchBlockTemp() {
+        super(TFCBlocks.TORCH.get(), TFCBlocks.WALL_TORCH.get());
     }
 
     @Override
-    public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance)
-    {
+    public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance) {
         return CSMath.blend(Temperature.convert(2.5, Temperature.Units.C, Temperature.Units.MC, false), 0, distance, 0.5, 4);
     }
 
