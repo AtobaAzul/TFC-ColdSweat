@@ -100,6 +100,8 @@ public class EventListener {
             event.register(new TFCMagmaBlockTemp());
             event.register(new SeaIceBlockTemp());
             event.register(new CrucibleBlockTemp());
+            event.register(new TFCCandleBlockTemp());
+            event.register(new TFCLampBlockTemp());
         }
 
         if (CompatManager.FIRMALIFE_ENABLED != null) {
