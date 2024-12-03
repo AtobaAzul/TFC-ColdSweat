@@ -13,7 +13,7 @@ import net.minecraft.world.level.material.FluidState;
 public class TFCTorchBlockTemp extends BlockTemp
 {
     public TFCTorchBlockTemp()
-    {   super(TFCBlocks.TORCH.get());
+    {   super(TFCBlocks.TORCH.get(), TFCBlocks.WALL_TORCH.get());
     }
 
     @Override
