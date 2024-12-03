@@ -153,8 +153,8 @@ dependencies {
     implementation fg.deobf("curse.maven:firmaciv-714158:5737719")
     implementation fg.deobf("curse.maven:alekiships-1068445:5815914")
 
-
-
+    //implementation fg.deobf("curse.maven:tfc-hot-or-not-499096:5700590")
+    //Crashes!!!!!!!BUt we still can do compat.
 
 
 
