@@ -2,7 +2,7 @@
   "type": "item",
   "insulation": {
     "heat": -2,
-    "cold": 4
+    "cold": 6
   },
   "data": {
     "items": [
