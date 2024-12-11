@@ -102,6 +102,7 @@ public class EventListener {
             event.register(new CrucibleBlockTemp());
             event.register(new TFCCandleBlockTemp());
             event.register(new TFCLampBlockTemp());
+            event.register(new FluidLoggableTemp());
         }
 
         if (CompatManager.FIRMALIFE_ENABLED != null) {
