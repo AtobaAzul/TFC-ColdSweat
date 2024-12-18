@@ -1,6 +1,6 @@
 {
   "type": "boiler",
-  "fuel": 16,
+  "fuel": 48,
   "data": {
     "items": [
       "#tfc:log_pile_logs"
