@@ -1,0 +1,9 @@
+{
+  "type": "hearth",
+  "fuel": 6,
+  "data": {
+    "items": [
+      "#tfc:lumber"
+    ]
+  }
+}

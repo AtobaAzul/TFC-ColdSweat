@@ -1,0 +1,9 @@
+{
+  "type": "hearth",
+  "fuel": 72,
+  "data": {
+    "items": [
+      "tfc:peat"
+    ]
+  }
+}
