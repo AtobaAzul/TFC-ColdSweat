@@ -25,6 +25,10 @@ public class TFCColdSweatMixinPlugin implements IMixinConfigPlugin {
 
     );
 
+    public static boolean modLoaded(String modId) {
+        return FMLLoader.getLoadingModList().getModFileById(modId) != null;
+    }
+
     @Override
     public void onLoad(String mixinPackage) {
 
@@ -58,9 +62,5 @@ public class TFCColdSweatMixinPlugin implements IMixinConfigPlugin {
     @Override
     public void postApply(String targetClassName, ClassNode targetClass, String mixinClassName, IMixinInfo mixinInfo) {
 
-    }
-
-    public static boolean modLoaded(String modId) {
-        return FMLLoader.getLoadingModList().getModFileById(modId) != null;
     }
 }

@@ -4,12 +4,14 @@ import com.momosoftworks.coldsweat.api.event.core.init.GatherDefaultTempModifier
 import com.momosoftworks.coldsweat.api.event.core.registry.BlockTempRegisterEvent;
 import com.momosoftworks.coldsweat.api.event.core.registry.TempModifierRegisterEvent;
 import com.momosoftworks.coldsweat.api.temperature.modifier.BiomeTempModifier;
+import com.momosoftworks.coldsweat.api.temperature.modifier.DepthBiomeTempModifier;
+import com.momosoftworks.coldsweat.api.temperature.modifier.ElevationTempModifier;
 import com.momosoftworks.coldsweat.api.temperature.modifier.TempModifier;
-import com.momosoftworks.coldsweat.api.temperature.modifier.UndergroundTempModifier;
 import com.momosoftworks.coldsweat.api.util.Placement;
 import com.momosoftworks.coldsweat.api.util.Temperature;
 import com.momosoftworks.coldsweat.config.ConfigSettings;
 import com.momosoftworks.coldsweat.util.registries.ModEffects;
+import com.momosoftworks.coldsweat.util.world.WorldHelper;
 import net.atobaazul.tfc_coldsweat.block_temp.*;
 import net.atobaazul.tfc_coldsweat.inv_temp.HotItemsTempModifier;
 import net.atobaazul.tfc_coldsweat.modifier.ClimateTempModifier;
@@ -31,8 +33,7 @@ public class EventListener {
     private static double getSeasonalGraceDuration(Level level, Player player) {
         int baseDuration = ConfigSettings.GRACE_LENGTH.get();
         double baseTemp = Temperature.convert(27, Temperature.Units.C, Temperature.Units.MC, true);
-        double tempAtSpawn = Temperature.getTemperatureAt(player.blockPosition(), level);
-
+        double tempAtSpawn = WorldHelper.getTemperatureAt(level, player.blockPosition());
         double tempPercent = baseTemp / tempAtSpawn;
         if (tempPercent < 1) {
             tempPercent = 1 + (1 - tempPercent);
@@ -72,7 +73,7 @@ public class EventListener {
             if (CompatManager.TFC_ENABLED != null) {
                 event.getModifiers().removeIf(modifier ->
                         modifier instanceof BiomeTempModifier
-                                || modifier instanceof UndergroundTempModifier);
+                                || modifier instanceof DepthBiomeTempModifier || modifier instanceof ElevationTempModifier);
             }
         }
     }

@@ -22,8 +22,6 @@ buildscript {
 }
 
 
-
-
 plugins {
     id 'eclipse'
     id 'idea'
@@ -103,13 +101,12 @@ repositories {
     mavenCentral()
 
     maven {
-        url = 'https://repo.spongepowered.org/maven' }
+        url = 'https://repo.spongepowered.org/maven'
+    }
     maven {
         url "https://repo.spongepowered.org/repository/maven-public/"
-        content { includeGroup "org.spongepowered" } }
-
-
-
+        content { includeGroup "org.spongepowered" }
+    }
 
 
     maven { url = "https://dvs1.progwml6.com/files/maven/" } // JEI
@@ -132,10 +129,6 @@ repositories {
     }
 
 
-
-
-
-
 }
 
 dependencies {
@@ -144,7 +137,7 @@ dependencies {
     implementation(fg.deobf("curse.maven:jei-238222:4712868"))
     implementation(fg.deobf("curse.maven:terrafirmacraft-302973:5571484"))
     implementation(fg.deobf("curse.maven:patchouli-306770:4966125"))
-    implementation fg.deobf("curse.maven:cold-sweat-506194:5946053")
+    implementation fg.deobf("curse.maven:cold-sweat-506194:6012437")
     implementation fg.deobf("curse.maven:curios-309927:5367944-sources-5367945")
     implementation fg.deobf("curse.maven:firmalife-453394:5775257")
     runtimeOnly(fg.deobf("curse.maven:jade-324717:5776962"))
@@ -155,8 +148,6 @@ dependencies {
 
     //implementation fg.deobf("curse.maven:tfc-hot-or-not-499096:5700590")
     //Crashes!!!!!!!BUt we still can do compat.
-
-
 
 
     // Specify the version of Minecraft to use.
@@ -190,11 +181,11 @@ dependencies {
 // See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
 tasks.named('processResources', ProcessResources).configure {
     var replaceProperties = [
-            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
-            forge_version: forge_version, forge_version_range: forge_version_range,
+            minecraft_version   : minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version       : forge_version, forge_version_range: forge_version_range,
             loader_version_range: loader_version_range,
-            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-            mod_authors: mod_authors, mod_description: mod_description,
+            mod_id              : mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors         : mod_authors, mod_description: mod_description,
     ]
     inputs.properties replaceProperties
 

@@ -24,9 +24,9 @@ public abstract class WorldHelperMixin {
                     EnvironmentHelpers.isRainingOrSnowing(level, pos)
                             && Climate.getPrecipitation(level, pos) == Biome.Precipitation.RAIN
                             && canSeeSky(level, pos, level.getMaxBuildHeight())
-                            || CompatManager.isRainstormAt(level, pos)
+                            || CompatManager.Weather2.isRainstormAt(level, pos)
                             && canSeeSky(level, pos.above(), level.getMaxBuildHeight())
-                            && !CompatManager.isColdEnoughToSnow(level, pos));
+                            && !CompatManager.SereneSeasons.isColdEnoughToSnow(level, pos));
         }
     }
 }
