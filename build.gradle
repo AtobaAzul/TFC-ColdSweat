@@ -135,16 +135,16 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     implementation(fg.deobf("curse.maven:jei-238222:4712868"))
-    implementation(fg.deobf("curse.maven:terrafirmacraft-302973:5571484"))
-    implementation(fg.deobf("curse.maven:patchouli-306770:4966125"))
-    implementation fg.deobf("curse.maven:cold-sweat-506194:6012437")
-    implementation fg.deobf("curse.maven:curios-309927:5367944-sources-5367945")
-    implementation fg.deobf("curse.maven:firmalife-453394:5775257")
-    runtimeOnly(fg.deobf("curse.maven:jade-324717:5776962"))
-    implementation fg.deobf("curse.maven:tfc-cast-iron-grill-694279:5677434")
+    implementation(fg.deobf("curse.maven:terrafirmacraft-${tfc_version}"))
+    implementation(fg.deobf("curse.maven:patchouli-${patchouli_version}"))
+    implementation fg.deobf("curse.maven:cold-sweat-${cold_sweat_version}")
+    implementation fg.deobf("curse.maven:curios-${curios_version}")
+    implementation fg.deobf("curse.maven:firmalife-${firmalife_version}")
+    runtimeOnly(fg.deobf("curse.maven:jade-${jade_version}"))
+    implementation fg.deobf("curse.maven:tfc-cast-iron-grill-694279:5677434") //Not gonna bother, don't think this'll ever update.
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
-    implementation fg.deobf("curse.maven:firmaciv-714158:5737719")
-    implementation fg.deobf("curse.maven:alekiships-1068445:5815914")
+    implementation fg.deobf("curse.maven:firmaciv-${firmaciv_version}")
+    implementation fg.deobf("curse.maven:alekiships-${alekiships_version}")
 
     //implementation fg.deobf("curse.maven:tfc-hot-or-not-499096:5700590")
     //Crashes!!!!!!!BUt we still can do compat.
