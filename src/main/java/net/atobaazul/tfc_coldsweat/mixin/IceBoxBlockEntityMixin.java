@@ -4,7 +4,7 @@ package net.atobaazul.tfc_coldsweat.mixin;
 import com.momosoftworks.coldsweat.common.blockentity.HearthBlockEntity;
 import com.momosoftworks.coldsweat.common.blockentity.IceboxBlockEntity;
 import com.momosoftworks.coldsweat.config.ConfigSettings;
-import net.atobaazul.tfc_coldsweat.TFCColdSweatFoodTraits;
+import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatFoodTraits;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.capabilities.food.FoodCapability;
 import net.minecraft.core.BlockPos;

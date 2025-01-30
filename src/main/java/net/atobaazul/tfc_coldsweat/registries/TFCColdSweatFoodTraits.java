@@ -1,4 +1,4 @@
-package net.atobaazul.tfc_coldsweat;
+package net.atobaazul.tfc_coldsweat.registries;
 
 import net.dries007.tfc.common.capabilities.food.FoodTrait;
 import net.dries007.tfc.util.Helpers;

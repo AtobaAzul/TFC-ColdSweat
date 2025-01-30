@@ -1,6 +1,9 @@
 package net.atobaazul.tfc_coldsweat;
 
 import com.mojang.logging.LogUtils;
+import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatBlockEntities;
+import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatBlocks;
+import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -30,7 +33,9 @@ public class TFCColdSweat {
 
         // Register the commonSetup method for modloading
         bus.addListener(this::commonSetup);
-
+        TFCColdSweatBlocks.BLOCKS.register(bus);
+        TFCColdSweatBlockEntities.BLOCK_ENTITIES.register(bus);
+        TFCColdSweatItems.ITEMS.register(bus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
