@@ -3,6 +3,7 @@ package net.atobaazul.tfc_coldsweat.block_temp;
 import com.momosoftworks.coldsweat.api.temperature.block_temp.BlockTemp;
 import com.momosoftworks.coldsweat.api.util.Temperature;
 import com.momosoftworks.coldsweat.util.math.CSMath;
+import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatBlocks;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.minecraft.core.BlockPos;
@@ -19,7 +20,14 @@ public class TFCMagmaBlockTemp extends BlockTemp {
                 TFCBlocks.MAGMA_BLOCKS.get(Rock.RHYOLITE).get(),
                 TFCBlocks.MAGMA_BLOCKS.get(Rock.BASALT).get(),
                 TFCBlocks.MAGMA_BLOCKS.get(Rock.ANDESITE).get(),
-                TFCBlocks.MAGMA_BLOCKS.get(Rock.DACITE).get()
+                TFCBlocks.MAGMA_BLOCKS.get(Rock.DACITE).get(),
+                TFCColdSweatBlocks.MAGMA_BLOCKS.get(Rock.GRANITE).get(),
+                TFCColdSweatBlocks.MAGMA_BLOCKS.get(Rock.DIORITE).get(),
+                TFCColdSweatBlocks.MAGMA_BLOCKS.get(Rock.GABBRO).get(),
+                TFCColdSweatBlocks.MAGMA_BLOCKS.get(Rock.RHYOLITE).get(),
+                TFCColdSweatBlocks.MAGMA_BLOCKS.get(Rock.BASALT).get(),
+                TFCColdSweatBlocks.MAGMA_BLOCKS.get(Rock.ANDESITE).get(),
+                TFCColdSweatBlocks.MAGMA_BLOCKS.get(Rock.DACITE).get()
         );
     }
 

@@ -8,72 +8,60 @@ package net.atobaazul.tfc_coldsweat.blockentities;
 
 import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatBlockEntities;
 import net.dries007.tfc.common.blockentities.TFCBlockEntity;
+import net.dries007.tfc.util.calendar.Calendars;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-import net.dries007.tfc.util.calendar.Calendars;
-
-public class TFCColdSweatTickCounterBlockEntity extends TFCBlockEntity
-{
-    public static void reset(Level level, BlockPos pos)
-    {
+public class TFCColdSweatTickCounterBlockEntity extends TFCBlockEntity {
+    public static void reset(Level level, BlockPos pos) {
         level.getBlockEntity(pos, TFCColdSweatBlockEntities.TICK_COUNTER.get()).ifPresent(TFCColdSweatTickCounterBlockEntity::resetCounter);
     }
 
     protected long lastUpdateTick = Integer.MIN_VALUE;
 
-    public TFCColdSweatTickCounterBlockEntity(BlockPos pos, BlockState state)
-    {
+    public TFCColdSweatTickCounterBlockEntity(BlockPos pos, BlockState state) {
         this(TFCColdSweatBlockEntities.TICK_COUNTER.get(), pos, state);
     }
 
-    protected TFCColdSweatTickCounterBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state)
-    {
+    protected TFCColdSweatTickCounterBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 
-    public long getTicksSinceUpdate()
-    {
+    public long getTicksSinceUpdate() {
         assert level != null;
         return Calendars.get(level).getTicks() - lastUpdateTick;
     }
 
-    public void setLastUpdateTick(long tick)
-    {
+    public void setLastUpdateTick(long tick) {
         lastUpdateTick = tick;
         setChanged();
     }
 
-    public long getLastUpdateTick()
-    {
+    public long getLastUpdateTick() {
         return lastUpdateTick;
     }
 
-    public void resetCounter()
-    {
+    public void resetCounter() {
         lastUpdateTick = Calendars.SERVER.getTicks();
         setChanged();
     }
 
-    public void reduceCounter(long amount)
-    {
+    public void reduceCounter(long amount) {
         lastUpdateTick += amount;
         setChanged();
     }
 
     @Override
-    public void loadAdditional(CompoundTag nbt)
-    {
+    public void loadAdditional(CompoundTag nbt) {
         lastUpdateTick = nbt.getLong("tick");
         super.loadAdditional(nbt);
     }
 
     @Override
-    public void saveAdditional(CompoundTag nbt)
-    {
+    public void saveAdditional(CompoundTag nbt) {
         nbt.putLong("tick", lastUpdateTick);
         super.saveAdditional(nbt);
     }
