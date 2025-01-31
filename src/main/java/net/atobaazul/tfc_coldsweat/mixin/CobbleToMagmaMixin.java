@@ -1,12 +1,9 @@
 package net.atobaazul.tfc_coldsweat.mixin;
 
 
-import net.atobaazul.tfc_coldsweat.TFCColdSweat;
 import net.atobaazul.tfc_coldsweat.blockentities.TFCColdSweatTickCounterBlockEntity;
 import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatBlockEntities;
-import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatBlocks;
 import net.dries007.tfc.common.blocks.rock.MossGrowingBlock;
-import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.capabilities.Capabilities;
 import net.dries007.tfc.common.fluids.FluidHelpers;
 import net.dries007.tfc.util.Helpers;
@@ -25,6 +22,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(MossGrowingBlock.class)
@@ -41,34 +39,37 @@ public class CobbleToMagmaMixin extends Block {
 
         final IFluidHandler fluidHandler = Helpers.getCapability(held, Capabilities.FLUID_ITEM);
 
-        if (fluidHandler != null)
-        {
+        if (fluidHandler != null) {
             final FluidStack simulatedDrained = fluidHandler.drain(lavaRequired, IFluidHandler.FluidAction.SIMULATE);
 
-            if (simulatedDrained.containsFluid(lava))
-            {
+            if (simulatedDrained.containsFluid(lava)) {
                 fluidHandler.drain(lavaRequired, IFluidHandler.FluidAction.EXECUTE);
                 FluidHelpers.playTransferSound(level, pos, lava, FluidHelpers.Transfer.DRAIN);
-                //TODO: Check if the block at pos is of tfc:rock/cobble/<rock type> and replace it with a tfc_coldsweat:rock/magma/<rock_type>
+                ResourceLocation blockID = ForgeRegistries.BLOCKS.getKey(level.getBlockState(pos).getBlock());
 
-                // Particles
-                if (!level.isClientSide)
-                {
-                    for (int i = 0; i < 5; ++i)
-                    {
-                        ((ServerLevel) level).sendParticles(
-                                ParticleTypes.LANDING_LAVA,
-                                (double) pos.getX() + level.random.nextDouble(),
-                                (double) pos.getY() + 1,
-                                (double) pos.getZ() + level.random.nextDouble(),
-                                1, 0.0, 0.0, 0.0, 1.0);
+                if (blockID != null && blockID.getNamespace().equals("tfc") && blockID.getPath().startsWith("rock/cobble/")) {
+                    // Convert to the magma variant
+                    String rockType = blockID.getPath().replace("rock/cobble/", "");
+                    ResourceLocation magmaBlockID = new ResourceLocation("tfc_coldsweat", "rock/magma/" + rockType);
+
+                    // Get the block and replace it
+                    Block magmaBlock = ForgeRegistries.BLOCKS.getValue(magmaBlockID);
+                    if (!magmaBlock.defaultBlockState().isAir()) {
+                        level.setBlockAndUpdate(pos, magmaBlock.defaultBlockState());
+                        level.getBlockEntity(pos, TFCColdSweatBlockEntities.TICK_COUNTER.get()).ifPresent(TFCColdSweatTickCounterBlockEntity::resetCounter);
+                    } else return InteractionResult.PASS;
+                    // Particles
+                    if (!level.isClientSide) {
+                        for (int i = 0; i < 5; ++i) {
+                            ((ServerLevel) level).sendParticles(ParticleTypes.LANDING_LAVA, (double) pos.getX() + level.random.nextDouble(), (double) pos.getY() + 1, (double) pos.getZ() + level.random.nextDouble(), 1, 0.0, 0.0, 0.0, 1.0);
+                        }
                     }
-                }
 
-                return InteractionResult.SUCCESS;
+                    return InteractionResult.SUCCESS;
+                }
             }
         }
 
-        return InteractionResult.PASS;
+            return InteractionResult.PASS;
+        }
     }
-}

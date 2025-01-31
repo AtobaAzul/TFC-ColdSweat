@@ -108,14 +108,11 @@ public class TFCColdSweatMagmaBlock extends MagmaBlock implements IForgeBlockExt
         TFCBubbleColumnBlock.updateColumnForFluid(level, pos);
 
         for (Direction direction : Direction.values()) {
-            System.out.println("For each direction");
-            System.out.println(direction);
 
             BlockPos adjacentPos = pos.relative(direction);
             FluidState adjacentState = level.getFluidState(adjacentPos);
 
             if (adjacentState.is(Fluids.LAVA)) {
-                System.out.println("Lava!!");
                 // Reset counter if lava is found next to the block
                 level.getBlockEntity(pos, TFCColdSweatBlockEntities.TICK_COUNTER.get())
                         .ifPresent(TFCColdSweatTickCounterBlockEntity::resetCounter);
@@ -134,14 +131,11 @@ public class TFCColdSweatMagmaBlock extends MagmaBlock implements IForgeBlockExt
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource rand) {
         onRandomTick(level, pos, ForgeRegistries.BLOCKS.getValue(this.cooled).defaultBlockState());
         for (Direction direction : Direction.values()) {
-            System.out.println("For each direction");
-            System.out.println(direction);
 
             BlockPos adjacentPos = pos.relative(direction);
             FluidState adjacentState = level.getFluidState(adjacentPos);
 
             if (adjacentState.is(Fluids.LAVA)) {
-                System.out.println("Lava!!");
                 // Reset counter if lava is found next to the block
                 level.getBlockEntity(pos, TFCColdSweatBlockEntities.TICK_COUNTER.get())
                         .ifPresent(TFCColdSweatTickCounterBlockEntity::resetCounter);
