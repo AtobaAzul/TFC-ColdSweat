@@ -1,0 +1,15 @@
+{
+  "required_mods": [
+    "firmalife"
+  ],
+  "data": {
+    "items": [
+      "firmalife:food/vanilla_ice_cream",
+      "firmalife:food/strawberry_ice_cream",
+      "firmalife:food/chocolate_ice_cream",
+      "firmalife:food/cookie_dough_ice_cream"
+    ]
+  },
+  "value": -10,
+  "duration": 600
+}
