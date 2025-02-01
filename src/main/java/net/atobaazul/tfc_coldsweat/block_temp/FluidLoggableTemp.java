@@ -1,6 +1,5 @@
 package net.atobaazul.tfc_coldsweat.block_temp;
 
-import com.eerussianguy.beneath.common.blocks.BeneathStateProperties;
 import com.momosoftworks.coldsweat.api.temperature.block_temp.BlockTemp;
 import com.momosoftworks.coldsweat.api.util.Temperature;
 import com.momosoftworks.coldsweat.util.math.CSMath;
@@ -13,7 +12,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class FluidLoggableTemp extends BlockTemp {
@@ -25,15 +23,7 @@ public class FluidLoggableTemp extends BlockTemp {
     public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance) {
         final Fluid containedFluid = state.getValue(TFCBlockStateProperties.ALL_WATER).getFluid();
         if (containedFluid == TFCFluids.SPRING_WATER.getSource()) {
-            System.out.println("spring water");
-            System.out.println(CSMath.blend(1.5, 0, distance, 0.5, 7));
-
             return CSMath.blend(1.5, 0, distance, 0.5, 7);
-        } else if (containedFluid == Fluids.LAVA.getSource()) {
-            System.out.println("lava");
-            System.out.println(CSMath.blend(10, 0, distance, 0.5, 15));
-
-            return CSMath.blend(10, 0, distance, 0.5, 15);
         }
         return 0;
     }
