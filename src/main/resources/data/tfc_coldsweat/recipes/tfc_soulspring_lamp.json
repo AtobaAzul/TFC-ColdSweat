@@ -1,0 +1,22 @@
+{
+  "conditions":[
+    {
+      "type": "forge:mod_loaded",
+      "modid": "beneath"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "cold_sweat:soul_sprout",
+      "count": 1
+    },
+    {
+      "item": "tfc:metal/unfinished_lamp/wrought_iron"
+    }
+  ],
+  "result": {
+    "item": "cold_sweat:soulspring_lamp",
+    "count": 1
+  }
+}

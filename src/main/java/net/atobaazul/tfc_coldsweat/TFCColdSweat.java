@@ -4,11 +4,15 @@ import com.mojang.logging.LogUtils;
 import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatBlockEntities;
 import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatBlocks;
 import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatItems;
+import net.dries007.tfc.common.TFCCreativeTabs;
+import net.dries007.tfc.common.blocks.rock.Rock;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -39,10 +43,22 @@ public class TFCColdSweat {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        bus.addListener(this::addCreative);
+
 
         // Register the item to a creative tab
     }
 
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+
+        }
+
+        if (event.getTab() == TFCCreativeTabs.EARTH.tab().get()) {
+            TFCColdSweatBlocks.MAGMA_BLOCKS.values().forEach(event::accept);
+
+        }
+    }
     private void commonSetup(final FMLCommonSetupEvent event) {
 
     }

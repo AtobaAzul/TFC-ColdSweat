@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "tfc_coldsweat:item/cursed_soaked_hide"
+  }
+}

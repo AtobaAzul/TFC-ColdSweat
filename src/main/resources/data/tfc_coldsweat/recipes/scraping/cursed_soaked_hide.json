@@ -1,0 +1,12 @@
+{
+  "type": "tfc:scraping",
+  "ingredient": {
+    "item": "tfc_coldsweat:cursed_soaked_hide"
+  },
+  "result": {
+    "item": "tfc_coldsweat:cursed_scraped_hide",
+    "count": 1
+  },
+  "input_texture": "tfc_coldsweat:item/cursed_soaked_hide",
+  "output_texture": "tfc_coldsweat:item/cursed_scraped_hided"
+}

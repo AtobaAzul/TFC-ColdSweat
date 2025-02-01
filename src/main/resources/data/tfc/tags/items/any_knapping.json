@@ -1,0 +1,12 @@
+{
+  "conditions":[
+    {
+      "type": "forge:mod_loaded",
+      "modid": "beneath"
+    }
+  ],
+  "replace": false,
+  "values": [
+    "cold_sweat:hoglin_hide"
+  ]
+}

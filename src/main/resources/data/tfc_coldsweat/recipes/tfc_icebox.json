@@ -1,24 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "CCC",
     "P P",
     "PPP"
   ],
-  "key":
-  {
-    "C":
-    {
+  "key": {
+    "C": {
       "tag": "forge:smooth_stone_slab"
     },
-    "P":
-    {
+    "P": {
       "tag": "tfc:lumber"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "cold_sweat:icebox",
     "count": 1
   }

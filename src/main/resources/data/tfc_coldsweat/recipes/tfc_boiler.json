@@ -1,24 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "CCC",
     "C C",
     "PPP"
   ],
-  "key":
-  {
-    "C":
-    {
+  "key": {
+    "C": {
       "tag": "tfc:rock/smooth"
     },
-    "P":
-    {
+    "P": {
       "tag": "tfc:rock/raw"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "cold_sweat:boiler",
     "count": 1
   }

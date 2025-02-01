@@ -1,23 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "AA",
     "BB"
   ],
-  "key":
-  {
-    "A":
-    {
+  "key": {
+    "A": {
       "tag": "tfc:high_quality_cloth"
     },
-    "B":
-    {
+    "B": {
       "tag": "minecraft:planks"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "cold_sweat:sewing_table",
     "count": 1
   }

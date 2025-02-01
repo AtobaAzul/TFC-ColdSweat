@@ -1,24 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "AB ",
     "AB ",
     "ABB"
   ],
-  "key":
-  {
-    "A":
-    {
+  "key": {
+    "A": {
       "tag": "forge:dusts/redstone"
     },
-    "B":
-    {
+    "B": {
       "tag": "minecraft:terracotta"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "cold_sweat:thermolith",
     "count": 1
   }

@@ -1,24 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern":
-  [
+  "pattern": [
     "A A",
     "A A",
     "ABA"
   ],
-  "key":
-  {
-    "B":
-    {
+  "key": {
+    "B": {
       "item": "tfc:brass_mechanisms"
     },
-    "A":
-    {
+    "A": {
       "tag": "forge:cobblestone"
     }
   },
-  "result":
-  {
+  "result": {
     "item": "cold_sweat:smokestack",
     "count": 1
   }

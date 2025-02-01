@@ -11,16 +11,14 @@ import java.util.function.Supplier;
 
 import static net.atobaazul.tfc_coldsweat.TFCColdSweat.MODID;
 
-/**
- * Collection of all TFC items.
- * Organized by {@link TFCCreativeTabs}
- * Unused is as the registry object fields themselves may be unused, but they are required to register each item.
- * Whenever possible, avoid using hardcoded references to these, prefer tags or recipes.
- */
+
 @SuppressWarnings("unused")
 public final class TFCColdSweatItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, MODID);
 
+    public static final RegistryObject<Item> PREPARED_CURSED_HIDE = register("cursed_prepared_hide", () -> new Item(new Item.Properties().stacksTo(32)));
+    public static final RegistryObject<Item> SCRAPED_CURSED_HIDE = register("cursed_scraped_hide", () -> new Item(new Item.Properties().stacksTo(32)));
+    public static final RegistryObject<Item> SOAKED_CURSED_HIDE = register("cursed_soaked_hide", () -> new Item(new Item.Properties().stacksTo(32)));
 
     private static RegistryObject<Item> register(String name) {
         return register(name, () -> new Item(new Item.Properties()));

@@ -1,0 +1,23 @@
+{
+  "conditions":[
+    {
+      "type": "forge:mod_loaded",
+      "modid": "beneath"
+    }
+  ],
+  "type": "tfc:barrel_sealed",
+  "input_item": {
+    "ingredient": {
+      "item": "tfc_coldsweat:cursed_prepared_hide"
+    }
+  },
+  "input_fluid": {
+    "ingredient": "tfc:tannin",
+    "amount": 500
+  },
+  "output_item": {
+    "item": "cold_sweat:hoglin_hide",
+    "count": 1
+  },
+  "duration": 8000
+}

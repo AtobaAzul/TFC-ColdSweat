@@ -30,8 +30,8 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 
@@ -63,21 +63,17 @@ public class TFCColdSweatMagmaBlock extends MagmaBlock implements IForgeBlockExt
 
         final IFluidHandler fluidHandler = Helpers.getCapability(held, Capabilities.FLUID_ITEM);
 
-        if (fluidHandler != null)
-        {
+        if (fluidHandler != null) {
             final FluidStack simulatedDrained = fluidHandler.drain(lavaRequired, FluidAction.SIMULATE);
 
-            if (simulatedDrained.containsFluid(lava))
-            {
+            if (simulatedDrained.containsFluid(lava)) {
                 fluidHandler.drain(lavaRequired, FluidAction.EXECUTE);
                 FluidHelpers.playTransferSound(level, pos, lava, FluidHelpers.Transfer.DRAIN);
                 level.getBlockEntity(pos, TFCColdSweatBlockEntities.TICK_COUNTER.get()).ifPresent(TFCColdSweatTickCounterBlockEntity::resetCounter);
 
                 // Particles
-                if (!level.isClientSide)
-                {
-                    for (int i = 0; i < 5; ++i)
-                    {
+                if (!level.isClientSide) {
+                    for (int i = 0; i < 5; ++i) {
                         ((ServerLevel) level).sendParticles(
                                 ParticleTypes.LANDING_LAVA,
                                 (double) pos.getX() + level.random.nextDouble(),

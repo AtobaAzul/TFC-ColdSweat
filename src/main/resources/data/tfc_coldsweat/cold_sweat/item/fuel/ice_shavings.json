@@ -1,5 +1,7 @@
 {
-  "required_mods": ["firmalife"],
+  "required_mods": [
+    "firmalife"
+  ],
   "type": "icebox",
   "fuel": 72,
   "data": {

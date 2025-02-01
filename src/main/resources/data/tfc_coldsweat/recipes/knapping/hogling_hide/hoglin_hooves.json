@@ -1,0 +1,20 @@
+{
+  "conditions":[
+    {
+      "type": "forge:mod_loaded",
+      "modid": "beneath"
+    }
+  ],
+  "type": "tfc:knapping",
+  "knapping_type": "tfc_coldsweat:hoglin_hide",
+  "pattern": [
+    "XX   ",
+    "XX   ",
+    "XX   ",
+    "XXXX ",
+    "XXXXX"
+  ],
+  "result": {
+    "item": "cold_sweat:hoglin_hooves"
+  }
+}

@@ -70,6 +70,6 @@ public class CobbleToMagmaMixin extends Block {
             }
         }
 
-            return InteractionResult.PASS;
-        }
+        return InteractionResult.PASS;
     }
+}
