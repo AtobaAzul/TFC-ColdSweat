@@ -1,4 +1,9 @@
 {
+  "conditions": [
+    {
+      "type": "forge:false"
+    }
+  ],
   "replace": false,
   "values": [
     "#tfc:foods"
