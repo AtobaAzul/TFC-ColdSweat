@@ -1,0 +1,19 @@
+{
+  "ingredient": [
+    {
+      "item": "cold_sweat:hoglin_headpiece"
+    },
+    {
+      "item": "cold_sweat:hoglin_tunic"
+    },
+    {
+      "item": "cold_sweat:hoglin_trousers"
+    },
+    {
+      "item": "cold_sweat:hoglin_hooves"
+    }
+  ],
+  "piercing": 1,
+  "slashing": 3,
+  "crushing": 1
+}
