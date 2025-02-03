@@ -7,6 +7,6 @@
   "block.tfc_coldsweat.rock.magma.dacite": "Dacite Magma Block",
   "tfc.jei.hoglin_hide_knapping": "Cursed Leather Knapping",
   "item.tfc_coldsweat.cursed_prepared_hide": "Cursed Prepared Hide",
-  "item.tfc_coldsweat.cursed_soaked_hide": "Cursed Prepared Hide",
-  "item.tfc_coldsweat.cursed_scraped_hide": "Cursed Prepared Hide"
+  "item.tfc_coldsweat.cursed_soaked_hide": "Cursed Soaked Hide",
+  "item.tfc_coldsweat.cursed_scraped_hide": "Cursed Scraped Hide"
 }
