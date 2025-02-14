@@ -21,6 +21,8 @@ public class FluidLoggableTemp extends BlockTemp {
 
     @Override
     public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance) {
+        if (!state.hasProperty(TFCBlockStateProperties.ALL_WATER)) return 0;
+
         final Fluid containedFluid = state.getValue(TFCBlockStateProperties.ALL_WATER).getFluid();
         if (containedFluid == TFCFluids.SPRING_WATER.getSource()) {
             return CSMath.blend(1.5, 0, distance, 0.5, 7);
