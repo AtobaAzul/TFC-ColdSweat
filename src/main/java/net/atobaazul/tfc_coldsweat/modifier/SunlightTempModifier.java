@@ -12,6 +12,8 @@ import net.minecraft.world.level.LightLayer;
 
 import java.util.function.Function;
 
+
+@Deprecated()
 public class SunlightTempModifier extends TempModifier {
     public SunlightTempModifier() {
     }

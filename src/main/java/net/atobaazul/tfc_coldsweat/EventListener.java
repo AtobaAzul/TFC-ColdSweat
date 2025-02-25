@@ -59,7 +59,7 @@ public class EventListener {
             if (CompatManager.TFC_ENABLED != null) {
                 if (event.getTrait() == Temperature.Trait.WORLD) {
                     event.addModifier(TFCSeasonModifier, Placement.Duplicates.BY_CLASS, Placement.BEFORE_FIRST);
-                    event.addModifier(TFCSunlightModifier, Placement.Duplicates.BY_CLASS, Placement.BEFORE_FIRST);
+                    //event.addModifier(TFCSunlightModifier, Placement.Duplicates.BY_CLASS, Placement.BEFORE_FIRST);
                     event.addModifier(new HotItemsTempModifier(), Placement.Duplicates.BY_CLASS, Placement.BEFORE_FIRST);
                 }
             }
