@@ -13,24 +13,30 @@ import net.minecraft.world.item.Item;
 import java.util.function.Function;
 
 public class HotItemsTempModifier extends InventoryItemsTempModifier {
-    TagKey<Item> insulatingTag = TagKey.create(
-            BuiltInRegistries.ITEM.key(),
-            new ResourceLocation("tfchotornot", "insulating"));
+    //For some reason requiring hotornot in the gradle breaks, so we'll just create this tag here.
+    TagKey<Item> insulatingTag = TagKey.create(BuiltInRegistries.ITEM.key(), new ResourceLocation("tfchotornot", "insulating"));
 
     @Override
     protected Function<Double, Double> calculate(LivingEntity entity, Temperature.Trait trait) {
         final float[] totalHeat = {0};
+        final float[] itemNumber = {0};
+        double itemTempScale = 0.025;
+        double heatMultiplier = entity.getOffhandItem().is(insulatingTag) ? 1 : 0.5;
+
         if (entity instanceof Player) {
             ((Player) entity).getInventory().items.forEach(item -> {
-                if (HeatCapability.getTemperature(item) > 0 && totalHeat[0] < 1) {
-                    double heatValue = entity.getOffhandItem().is(insulatingTag) ? 80 : 40;
-                    double itemTemp = Temperature.convert(HeatCapability.getTemperature(item), Temperature.Units.C, Temperature.Units.MC, false) / heatValue;
-                    totalHeat[0] = (float) (totalHeat[0] + itemTemp);
-                } else if (totalHeat[0] > 1) {
-                    totalHeat[0] = 1;
+                float itemTemp = HeatCapability.getTemperature(item);
+
+                if (itemTemp >= 480f) { //ignore tiny temps, since they'd be inconsequential anyway.
+                    /*
+                    Dividing by 10 (0.1x) gives roughly a range between 4.8 and 16 - which is fine for one item, but too much for several.
+                    So diving 20 (0.05x) is enough to make individual items noticeable, and many hot items dangerous, but not a death sentence
+                    */
+                    itemNumber[0] = itemNumber[0] + 1; //Diminishing returns
+                    totalHeat[0] = (float) (totalHeat[0] + Temperature.convert(itemTemp * itemTempScale, Temperature.Units.C, Temperature.Units.MC, false) / Math.sqrt(itemNumber[0]));
                 }
             });
         }
-        return temp -> temp + totalHeat[0];
+        return temp -> temp + (totalHeat[0] * heatMultiplier);
     }
 }
