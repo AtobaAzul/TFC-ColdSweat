@@ -48,7 +48,7 @@ public class CobbleToMagmaMixin extends Block {
                 ResourceLocation blockID = ForgeRegistries.BLOCKS.getKey(level.getBlockState(pos).getBlock());
 
                 if (blockID != null && blockID.getNamespace().equals("tfc") && blockID.getPath().startsWith("rock/cobble/")) {
-                    // Convert to the magma variant
+                    // Convert to the magma variant. This is horribly scuffed.
                     String rockType = blockID.getPath().replace("rock/cobble/", "");
                     ResourceLocation magmaBlockID = new ResourceLocation("tfc_coldsweat", "rock/magma/" + rockType);
 

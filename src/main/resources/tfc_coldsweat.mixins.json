@@ -7,6 +7,7 @@
   "mixins": [
     "CobbleToMagmaMixin",
     "FilledWaterSkinItemMixin",
+    "TFCFoodDataMixin",
     "WorldHelperMixin",
     "compat.AlekishipsWorldHelperMixin"
   ],
@@ -14,6 +15,7 @@
     "defaultRequire": 1
   },
   "client": [
+    "TFCFoodDataMixin"
   ],
   "plugin": "net.atobaazul.tfc_coldsweat.mixin_plugin.TFCColdSweatMixinPlugin"
 }
