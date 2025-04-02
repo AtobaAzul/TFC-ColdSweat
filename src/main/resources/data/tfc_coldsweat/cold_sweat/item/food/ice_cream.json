@@ -2,7 +2,7 @@
   "required_mods": [
     "firmalife"
   ],
-  "data": {
+  "item": {
     "items": [
       "firmalife:food/vanilla_ice_cream",
       "firmalife:food/strawberry_ice_cream",
