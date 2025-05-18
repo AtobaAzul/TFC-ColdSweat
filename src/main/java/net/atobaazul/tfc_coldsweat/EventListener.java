@@ -82,7 +82,7 @@ public class EventListener {
     public static void registerTempModifiers(TempModifierRegisterEvent event) {
         if (CompatManager.TFC_ENABLED != null) {
             event.register(new ResourceLocation(TFCColdSweat.MODID, "season"), ClimateTempModifier::new);
-            event.register(new ResourceLocation(TFCColdSweat.MODID, "sunlight"), SunlightTempModifier::new);
+            //event.register(new ResourceLocation(TFCColdSweat.MODID, "sunlight"), SunlightTempModifier::new);
             event.register(new ResourceLocation(TFCColdSweat.MODID, "hot_items"), HotItemsTempModifier::new);
         }
     }
