@@ -17,9 +17,7 @@ public class SpringWaterBlockTemp extends BlockTemp {
 
     @Override
     public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance) {
-        FluidState fluidState = state.getFluidState();
-        double temp = (fluidState.getAmount() / 2f);
-        return CSMath.blend(temp, 0, distance, 0.5, 7);
+        return CSMath.blend(0.25, 0, distance, 0.5, 7);
     }
 
     @Override
@@ -29,6 +27,6 @@ public class SpringWaterBlockTemp extends BlockTemp {
 
     @Override
     public double maxTemperature() {
-        return Temperature.convert(40, Temperature.Units.C, Temperature.Units.MC, true);
+        return Temperature.convert(37.0, Temperature.Units.C, Temperature.Units.MC, true);
     }
 }
