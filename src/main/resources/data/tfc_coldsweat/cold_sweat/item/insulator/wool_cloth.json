@@ -4,7 +4,7 @@
     "heat": -2,
     "cold": 6
   },
-  "item": {
+  "data": {
     "items": [
       "tfc:wool_cloth"
     ]
