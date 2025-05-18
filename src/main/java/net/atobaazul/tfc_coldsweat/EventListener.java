@@ -71,9 +71,12 @@ public class EventListener {
     public static void onGatherDefaultTempModifiers(GatherDefaultTempModifiersEvent event) {
         if (event.getEntity() instanceof Player) {
             if (CompatManager.TFC_ENABLED != null) {
-                event.getModifiers().removeIf(modifier ->
-                        modifier instanceof BiomeTempModifier
-                                || modifier instanceof DepthBiomeTempModifier || modifier instanceof ElevationTempModifier);
+                var modifiers = event.getModifiers();
+                if (modifiers != null) {
+                    event.getModifiers().removeIf(modifier ->
+                            modifier instanceof BiomeTempModifier
+                                    || modifier instanceof DepthBiomeTempModifier || modifier instanceof ElevationTempModifier);
+                }
             }
         }
     }
