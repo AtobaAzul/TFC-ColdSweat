@@ -1,7 +1,7 @@
 {
   "type": "boiler",
   "fuel": 72,
-  "data": {
+  "item": {
     "items": [
       "tfc:peat"
     ]
