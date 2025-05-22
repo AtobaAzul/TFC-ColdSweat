@@ -1,6 +1,7 @@
 package net.atobaazul.tfc_coldsweat.inv_temp;
 
 import com.momosoftworks.coldsweat.api.temperature.modifier.InventoryItemsTempModifier;
+import com.momosoftworks.coldsweat.api.temperature.modifier.TempModifier;
 import com.momosoftworks.coldsweat.api.util.Temperature;
 import net.dries007.tfc.common.capabilities.heat.HeatCapability;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,7 +13,7 @@ import net.minecraft.world.item.Item;
 
 import java.util.function.Function;
 
-public class HotItemsTempModifier extends InventoryItemsTempModifier {
+public class HotItemsTempModifier extends TempModifier {
     //For some reason requiring hotornot in the gradle breaks, so we'll just create this tag here.
     TagKey<Item> insulatingTag = TagKey.create(BuiltInRegistries.ITEM.key(), new ResourceLocation("tfchotornot", "insulating"));
 
