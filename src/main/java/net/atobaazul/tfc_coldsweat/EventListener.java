@@ -1,12 +1,9 @@
 package net.atobaazul.tfc_coldsweat;
 
-import com.momosoftworks.coldsweat.api.event.core.init.GatherDefaultTempModifiersEvent;
+import com.momosoftworks.coldsweat.api.event.core.init.DefaultTempModifiersEvent;
 import com.momosoftworks.coldsweat.api.event.core.registry.BlockTempRegisterEvent;
 import com.momosoftworks.coldsweat.api.event.core.registry.TempModifierRegisterEvent;
-import com.momosoftworks.coldsweat.api.temperature.modifier.BiomeTempModifier;
-import com.momosoftworks.coldsweat.api.temperature.modifier.DepthBiomeTempModifier;
-import com.momosoftworks.coldsweat.api.temperature.modifier.ElevationTempModifier;
-import com.momosoftworks.coldsweat.api.temperature.modifier.TempModifier;
+import com.momosoftworks.coldsweat.api.temperature.modifier.*;
 import com.momosoftworks.coldsweat.api.util.Placement;
 import com.momosoftworks.coldsweat.api.util.Temperature;
 import com.momosoftworks.coldsweat.config.ConfigSettings;
@@ -20,10 +17,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import com.momosoftworks.coldsweat.api.temperature.modifier.BiomeTempModifier;
+
+import java.util.List;
+import java.util.Map;
 
 @Mod.EventBusSubscriber
 public class EventListener {
@@ -45,15 +47,29 @@ public class EventListener {
 
     @SubscribeEvent
     public static void onSpawn(EntityJoinLevelEvent event) {
-        if (!event.getLevel().isClientSide && event.getEntity() instanceof Player
-                && ConfigSettings.GRACE_ENABLED.get() && !event.getEntity().getPersistentData().getBoolean("GivenGracePeriod")) {
+        if (!event.getLevel().isClientSide && event.getEntity() instanceof Player && ConfigSettings.GRACE_ENABLED.get() && !event.getEntity().getPersistentData().getBoolean("GivenGracePeriod")) {
             event.getEntity().getPersistentData().putBoolean("GivenGracePeriod", true);
             ((Player) event.getEntity()).addEffect(new MobEffectInstance(ModEffects.GRACE, (int) getSeasonalGraceDuration(event.getLevel(), (Player) event.getEntity()), 0, false, false, true));
         }
     }
 
+    @SubscribeEvent()
+    public static void defineDefaultModifiers(DefaultTempModifiersEvent event) {
+        if (event.getEntity() instanceof Player) {
+            if (CompatManager.TFC_ENABLED != null) {
 
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
+                event.addModifier(Temperature.Trait.WORLD, TFCSeasonModifier, Placement.Duplicates.BY_CLASS, Placement.AFTER_LAST );
+                event.addModifier(Temperature.Trait.WORLD, new HotItemsTempModifier(), Placement.Duplicates.BY_CLASS, Placement.AFTER_LAST );
+
+                event.getModifiers(Temperature.Trait.WORLD).removeIf(modifier -> modifier instanceof BiomeTempModifier ||
+                        modifier instanceof DepthBiomeTempModifier ||
+                        modifier instanceof ElevationTempModifier);
+            }
+        }
+    }
+
+    //deprecated since CS 2.4
+    /*@SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void defineDefaultModifiers(GatherDefaultTempModifiersEvent event) {
         if (event.getEntity() instanceof Player) {
             if (CompatManager.TFC_ENABLED != null) {
@@ -79,7 +95,7 @@ public class EventListener {
                 }
             }
         }
-    }
+    }*/
 
     @SubscribeEvent
     public static void registerTempModifiers(TempModifierRegisterEvent event) {

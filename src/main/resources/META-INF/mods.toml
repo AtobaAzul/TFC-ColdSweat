@@ -65,6 +65,12 @@ versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
+[[dependencies.${mod_id}]]
+modId= "cold_sweat"
+mandatory = true
+versionRange = "[2.4-b03a,)"
+ordering = "BEFORE"
+side= "BOTH"
 
 
 
