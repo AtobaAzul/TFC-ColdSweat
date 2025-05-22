@@ -24,6 +24,7 @@ public class HotItemsTempModifier extends InventoryItemsTempModifier {
         double heatMultiplier = entity.getOffhandItem().is(insulatingTag) ? 1 : 0.5;
 
         if (entity instanceof Player) {
+            
             ((Player) entity).getInventory().items.forEach(item -> {
                 float itemTemp = HeatCapability.getTemperature(item);
 
@@ -34,6 +35,10 @@ public class HotItemsTempModifier extends InventoryItemsTempModifier {
                     */
                     itemNumber[0] = itemNumber[0] + 1; //Diminishing returns
                     totalHeat[0] = (float) (totalHeat[0] + Temperature.convert(itemTemp * itemTempScale, Temperature.Units.C, Temperature.Units.MC, false) / Math.sqrt(itemNumber[0]));
+                    //cap temp at 2 mc units (50ºC) so you don't get cremated if you hold too many ingots.
+                    if (totalHeat[0] > 2) {
+                        totalHeat[0] = 2;
+                    }
                 }
             });
         }
