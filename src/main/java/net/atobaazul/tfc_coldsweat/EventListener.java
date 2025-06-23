@@ -62,7 +62,7 @@ public class EventListener {
                 event.addModifier(Temperature.Trait.WORLD, new HotItemsTempModifier(), Placement.Duplicates.BY_CLASS, Placement.AFTER_LAST );
 
                 event.getModifiers(Temperature.Trait.WORLD).removeIf(modifier -> modifier instanceof BiomeTempModifier ||
-                        modifier instanceof DepthBiomeTempModifier ||
+                        modifier instanceof CaveBiomeTempModifier ||
                         modifier instanceof ElevationTempModifier);
             }
         }
