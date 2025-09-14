@@ -2,7 +2,6 @@ package net.atobaazul.tfc_coldsweat.mixin;
 
 
 import com.momosoftworks.coldsweat.common.item.FilledWaterskinItem;
-import net.dries007.tfc.common.component.food.FoodData;
 import net.dries007.tfc.common.player.IPlayerInfo;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
