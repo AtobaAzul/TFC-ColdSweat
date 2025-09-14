@@ -5,7 +5,7 @@ Credit: https://github.com/Momo-Softworks/Cold-Sweat/blob/1.20.1-FG/src/main/jav
  */
 
 import com.google.common.collect.ImmutableMap;
-import net.minecraftforge.fml.loading.FMLLoader;
+import net.neoforged.fml.loading.FMLLoader;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -21,7 +21,7 @@ public class TFCColdSweatMixinPlugin implements IMixinConfigPlugin {
 
 
     private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.of(
-            COMPAT_MIXIN_PACKAGE + "AlekishipsWorldHelperMixin", () -> modLoaded("alekiships")
+           // COMPAT_MIXIN_PACKAGE + "AlekishipsWorldHelperMixin", () -> modLoaded("alekiships") TODO: Re-add when alekiships comes to 1.21
 
     );
 

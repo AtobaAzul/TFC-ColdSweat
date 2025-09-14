@@ -1,9 +1,0 @@
-{
-  "type": "hearth",
-  "fuel": 48,
-  "item": {
-    "items": [
-      "#tfc:log_pile_logs"
-    ]
-  }
-}

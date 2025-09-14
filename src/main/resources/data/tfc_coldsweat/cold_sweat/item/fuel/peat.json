@@ -1,9 +1,0 @@
-{
-  "type": "boiler",
-  "fuel": 72,
-  "item": {
-    "items": [
-      "tfc:peat"
-    ]
-  }
-}

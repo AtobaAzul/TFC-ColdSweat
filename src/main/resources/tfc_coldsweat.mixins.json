@@ -5,17 +5,13 @@
   "refmap": "tfc_coldsweat.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "CobbleToMagmaMixin",
-    "FilledWaterSkinItemMixin",
-    "TFCFoodDataMixin",
-    "WorldHelperMixin",
-    "compat.AlekishipsWorldHelperMixin"
+    "FilledWaterskinItemMixin",
+    "PlayerInfoMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "client": [
-    "TFCFoodDataMixin"
   ],
   "plugin": "net.atobaazul.tfc_coldsweat.mixin_plugin.TFCColdSweatMixinPlugin"
 }

@@ -1,8 +1,0 @@
-{
-  "conditions": [
-    {
-      "condition": "forge:false"
-    }
-  ],
-  "type": "cold_sweat:mob_drops"
-}

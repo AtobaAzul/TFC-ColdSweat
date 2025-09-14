@@ -1,67 +1,47 @@
 package net.atobaazul.tfc_coldsweat;
 
+import net.atobaazul.tfc_coldsweat.config.TFCColdSweatConfig;
 import com.mojang.logging.LogUtils;
-import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatBlockEntities;
-import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatBlocks;
-import net.atobaazul.tfc_coldsweat.registries.TFCColdSweatItems;
-import net.dries007.tfc.common.TFCCreativeTabs;
-import net.dries007.tfc.common.blocks.rock.Rock;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.*;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig.Type;
+import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
-@Mod(TFCColdSweat.MODID)
-public class TFCColdSweat {
+import net.minecraft.resources.ResourceLocation;
 
-    // Define mod id in a common place for everything to reference
-    public static final String MODID = "tfc_coldsweat";
+@Mod(TFCColdSweat.MOD_ID)
+public final class TFCColdSweat {
 
-    public static final TagKey<Item> sunlightProtection = ItemTags.create(new ResourceLocation(MODID, "protects_against_sunlight"));
+	public static final Logger LOG = LogUtils.getLogger();
+	public static final String MOD_ID = "tfc_coldsweat";
 
-    // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+	public TFCColdSweat(final ModContainer modContainer, final IEventBus modBus, final Dist dist) {
+		// I likely won't even use these but better have these handy in case I do need to.
+		modContainer.registerConfig(Type.COMMON, TFCColdSweatConfig.COMMON.spec());
+		modContainer.registerConfig(Type.CLIENT, TFCColdSweatConfig.CLIENT.spec());
+		modContainer.registerConfig(Type.SERVER, TFCColdSweatConfig.SERVER.spec());
+		modContainer.registerConfig(Type.STARTUP, TFCColdSweatConfig.STARTUP.spec());
 
-    public TFCColdSweat() {
-        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		modBus.register(TFCColdSweat.class);
 
-
-        // Register the commonSetup method for modloading
-        bus.addListener(this::commonSetup);
-        TFCColdSweatBlocks.BLOCKS.register(bus);
-        TFCColdSweatBlockEntities.BLOCK_ENTITIES.register(bus);
-        TFCColdSweatItems.ITEMS.register(bus);
-
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-        bus.addListener(this::addCreative);
+		TFCColdSweatForgeEvents.init(NeoForge.EVENT_BUS);
+	}
 
 
-        // Register the item to a creative tab
-    }
+	/**
+	 * Shorthand for {@code ResourceLocation.fromNamespaceAndPath(MOD_ID, path)}
+	 */
+	public static ResourceLocation location(final String path) {
+		return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+	}
 
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
-
-        }
-
-        if (event.getTab() == TFCCreativeTabs.EARTH.tab().get()) {
-            TFCColdSweatBlocks.MAGMA_BLOCKS.values().forEach(event::accept);
-
-        }
-    }
-    private void commonSetup(final FMLCommonSetupEvent event) {
-
-    }
-
-
+	/**
+	 * Helper for creating modid prepended lang keys
+	 */
+	public static String lang(final String langKey) {
+		return MOD_ID + "." + langKey;
+	}
 }
