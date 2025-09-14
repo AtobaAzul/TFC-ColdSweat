@@ -9,3 +9,5 @@ public class CompatManager {
     public static final ModFileInfo TFC_ENABLED = FMLLoader.getLoadingModList().getModFileById("tfc");
     public static final ModFileInfo ALEKISHIPS_ENABLED = FMLLoader.getLoadingModList().getModFileById("alekiships");
 }
+
+
