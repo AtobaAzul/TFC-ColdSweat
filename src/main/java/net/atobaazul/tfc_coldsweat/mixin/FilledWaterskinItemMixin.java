@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+//TODO: This is bad. Use the forge event.
 @Mixin(FilledWaterskinItem.class)
 public class FilledWaterskinItemMixin extends Item {
     public FilledWaterskinItemMixin(Properties pProperties) {
