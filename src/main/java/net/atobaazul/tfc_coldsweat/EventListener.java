@@ -11,20 +11,30 @@ import com.momosoftworks.coldsweat.api.util.Placement;
 import com.momosoftworks.coldsweat.api.util.Temperature;
 import com.momosoftworks.coldsweat.config.ConfigSettings;
 import com.momosoftworks.coldsweat.core.init.ModEffects;
+import com.momosoftworks.coldsweat.core.init.ModItems;
 import com.momosoftworks.coldsweat.util.world.WorldHelper;
 import net.atobaazul.tfc_coldsweat.temperature.block.*;
 import net.atobaazul.tfc_coldsweat.temperature.modifier.ClimateTempModifier;
 import net.atobaazul.tfc_coldsweat.temperature.modifier.ItemHeatTempModifier;
+import net.dries007.tfc.common.player.IPlayerInfo;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.neoforged.bus.api.Event;
+import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
+import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
 @EventBusSubscriber
 public class EventListener {
+    public static void init(final IEventBus eventBus) {
+        // Register all static @SubscribeEvent annotated event methods
+        eventBus.register(EventListener.class);
+    }
+
     public static final TempModifier TFCSeasonModifier = new ClimateTempModifier();
     public static final TempModifier ItemTempModifier = new ItemHeatTempModifier();
 
@@ -47,6 +57,14 @@ public class EventListener {
         if (!event.getLevel().isClientSide && event.getEntity() instanceof Player && ConfigSettings.GRACE_ENABLED.get() && !event.getEntity().getPersistentData().getBoolean("GivenGracePeriod")) {
             event.getEntity().getPersistentData().putBoolean("GivenGracePeriod", true);
             ((Player) event.getEntity()).addEffect(new MobEffectInstance(ModEffects.GRACE, (int) getSeasonalGraceDuration(event.getLevel(), (Player) event.getEntity()), 0, false, false, true));
+        }
+    }
+
+    @SubscribeEvent
+    public static void onUseItem(LivingEntityUseItemEvent.Finish event) {
+        System.out.println("event fired");
+        if (event.getEntity() instanceof Player player && event.getItem().is(ModItems.FILLED_WATERSKIN)) {
+            IPlayerInfo.get(player).addThirst(20f);
         }
     }
 
@@ -91,4 +109,5 @@ public class EventListener {
             event.register(new FireBoxBlockTemp());
         }
     }
+
 }

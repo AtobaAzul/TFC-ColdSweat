@@ -3,7 +3,6 @@
   "package": "net.atobaazul.tfc_coldsweat.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "FilledWaterskinItemMixin",
     "PlayerInfoMixin"
   ],
   "injectors": {
