@@ -87,7 +87,8 @@ public class EventListener {
             event.register(new CrucibleBlockTemp());
             event.register(new TFCCandleBlockTemp());
             event.register(new TFCLampBlockTemp());
-            event.register(new FluidLoggableTemp());
+            event.register(new FluidLoggableBlockTemp());
+            event.register(new FireBoxBlockTemp());
         }
     }
 }

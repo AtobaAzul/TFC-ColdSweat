@@ -13,8 +13,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 
-public class FluidLoggableTemp extends BlockTemp {
-    public FluidLoggableTemp() {
+public class FluidLoggableBlockTemp extends BlockTemp {
+    public FluidLoggableBlockTemp() {
         super(BuiltInRegistries.BLOCK.stream().filter(block -> block instanceof IFluidLoggable).toArray(Block[]::new));
     }
 
