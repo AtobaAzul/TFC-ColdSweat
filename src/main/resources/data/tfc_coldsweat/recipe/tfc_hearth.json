@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "BCB",
+    "BDB"
+  ],
+  "key": {
+    "A": {
+      "item": "cold_sweat:smokestack"
+    },
+    "B": {
+      "item": "tfc:fire_bricks"
+    },
+    "C": {
+      "item": "tfc:brass_mechanisms"
+    },
+    "D": {
+      "item": "tfc:metal/sheet/steel"
+    }
+  },
+  "result": {
+    "item": "cold_sweat:hearth",
+    "count": 1
+  }
+}

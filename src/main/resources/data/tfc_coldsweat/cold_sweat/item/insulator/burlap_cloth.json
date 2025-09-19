@@ -1,0 +1,12 @@
+{
+  "type": "item",
+  "insulation": {
+    "heat": 2,
+    "cold": 2
+  },
+  "item": {
+    "items": [
+      "tfc:burlap_cloth"
+    ]
+  }
+}

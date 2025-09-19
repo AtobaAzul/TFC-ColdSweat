@@ -1,0 +1,12 @@
+{
+  "type": "item",
+  "insulation": {
+    "heat": -2,
+    "cold": 6
+  },
+  "item": {
+    "items": [
+      "tfc:wool_cloth"
+    ]
+  }
+}

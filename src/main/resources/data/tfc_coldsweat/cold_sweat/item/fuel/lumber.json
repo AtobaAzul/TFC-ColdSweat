@@ -1,0 +1,9 @@
+{
+  "type": "boiler",
+  "fuel": 6,
+  "item": {
+    "items": [
+      "#tfc:lumber"
+    ]
+  }
+}

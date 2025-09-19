@@ -1,0 +1,12 @@
+{
+  "required_mods": [
+    "firmalife"
+  ],
+  "type": "hearth",
+  "fuel": -72,
+  "item": {
+    "items": [
+      "firmalife:ice_shavings"
+    ]
+  }
+}
