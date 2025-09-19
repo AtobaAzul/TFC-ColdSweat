@@ -1,8 +1,7 @@
 {
   "required": true,
-  "minVersion": "0.8",
   "package": "net.atobaazul.tfc_coldsweat.mixin",
-  "refmap": "tfc_coldsweat.refmap.json",
+  "compatibilityLevel": "JAVA_21",
   "mixins": [
     "FilledWaterskinItemMixin",
     "PlayerInfoMixin"
@@ -10,7 +9,7 @@
   "injectors": {
     "defaultRequire": 1
   },
-  "client": [
-  ],
-  "plugin": "net.atobaazul.tfc_coldsweat.mixin_plugin.TFCColdSweatMixinPlugin"
+  "overwrites": {
+    "requireAnnotations": true
+  }
 }

@@ -1,7 +1,6 @@
 package net.atobaazul.tfc_coldsweat.mixin;
 
 import com.momosoftworks.coldsweat.api.util.Temperature;
-import net.dries007.tfc.common.player.IPlayerInfo;
 import net.dries007.tfc.common.player.PlayerInfo;
 import net.dries007.tfc.config.TFCConfig;
 import net.minecraft.util.Mth;

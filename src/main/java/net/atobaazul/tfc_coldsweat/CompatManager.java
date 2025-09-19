@@ -1,7 +1,7 @@
 package net.atobaazul.tfc_coldsweat;
 
-import net.neoforged.fml.loading.moddiscovery.ModFileInfo;
 import net.neoforged.fml.loading.FMLLoader;
+import net.neoforged.fml.loading.moddiscovery.ModFileInfo;
 
 public class CompatManager {
     public static final ModFileInfo FIRMALIFE_ENABLED = FMLLoader.getLoadingModList().getModFileById("firmalife");
