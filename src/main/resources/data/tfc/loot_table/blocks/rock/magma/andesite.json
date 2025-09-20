@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "tfc:rock/raw/andesite"
+          "name": "tfc:blocks/rock/raw/andesite"
         }
       ],
       "conditions": [

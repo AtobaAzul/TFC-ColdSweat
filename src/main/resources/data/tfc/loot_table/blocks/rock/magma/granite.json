@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "tfc:rock/raw/granite"
+          "name": "tfc:blocks/rock/raw/granite"
         }
       ],
       "conditions": [

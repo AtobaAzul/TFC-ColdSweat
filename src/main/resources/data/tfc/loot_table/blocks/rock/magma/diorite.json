@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "tfc:rock/raw/diorite"
+          "name": "tfc:blocks/rock/raw/diorite"
         }
       ],
       "conditions": [

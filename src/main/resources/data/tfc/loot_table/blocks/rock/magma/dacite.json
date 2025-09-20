@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "tfc:rock/raw/dacite"
+          "name": "tfc:blocks/rock/raw/dacite"
         }
       ],
       "conditions": [

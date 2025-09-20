@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "tfc:rock/raw/gabbro"
+          "name": "tfc:blocks/rock/raw/gabbro"
         }
       ],
       "conditions": [

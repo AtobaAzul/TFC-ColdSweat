@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:loot_table",
-          "name": "tfc:rock/raw/basalt"
+          "name": "tfc:blocks/rock/raw/basalt"
         }
       ],
       "conditions": [
