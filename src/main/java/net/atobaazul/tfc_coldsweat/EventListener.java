@@ -21,7 +21,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -30,13 +29,13 @@ import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
 @EventBusSubscriber
 public class EventListener {
+    public static final TempModifier TFCSeasonModifier = new ClimateTempModifier();
+    public static final TempModifier ItemTempModifier = new ItemHeatTempModifier();
+
     public static void init(final IEventBus eventBus) {
         // Register all static @SubscribeEvent annotated event methods
         eventBus.register(EventListener.class);
     }
-
-    public static final TempModifier TFCSeasonModifier = new ClimateTempModifier();
-    public static final TempModifier ItemTempModifier = new ItemHeatTempModifier();
 
     //scale grace effect duration with temperature at spawn.
     private static double getSeasonalGraceDuration(Level level, Player player) {
@@ -44,11 +43,13 @@ public class EventListener {
         double baseTemp = Temperature.convert(27, Temperature.Units.C, Temperature.Units.MC, true);
         double tempAtSpawn = WorldHelper.getTemperatureAt(level, player.blockPosition());
         double tempPercent = baseTemp / tempAtSpawn;
+
         if (tempPercent < 1) {
             tempPercent = 1 + (1 - tempPercent);
         }
 
         tempPercent = Math.min(tempPercent, 2);
+
         return baseDuration * tempPercent;
     }
 
@@ -61,7 +62,7 @@ public class EventListener {
     }
 
     @SubscribeEvent
-    public static void onUseItem(LivingEntityUseItemEvent.Finish event) {
+    public void onUseItem(LivingEntityUseItemEvent.Finish event) {
         System.out.println("event fired");
         if (event.getEntity() instanceof Player player && event.getItem().is(ModItems.FILLED_WATERSKIN)) {
             IPlayerInfo.get(player).addThirst(20f);
@@ -72,10 +73,8 @@ public class EventListener {
     public static void defineDefaultModifiers(DefaultTempModifiersEvent event) {
         if (event.getEntity() instanceof Player) {
             if (CompatManager.TFC_ENABLED != null) {
-
                 event.addModifier(Temperature.Trait.WORLD, TFCSeasonModifier, Placement.Duplicates.BY_CLASS, Placement.AFTER_LAST);
                 event.addModifier(Temperature.Trait.WORLD, ItemTempModifier, Placement.Duplicates.BY_CLASS, Placement.AFTER_LAST);
-
                 event.getModifiers(Temperature.Trait.WORLD).removeIf(modifier -> modifier instanceof BiomeTempModifier || modifier instanceof CaveBiomeTempModifier || modifier instanceof ElevationTempModifier);
             }
         }

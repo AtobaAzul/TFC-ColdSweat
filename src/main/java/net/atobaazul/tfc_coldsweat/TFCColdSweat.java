@@ -39,7 +39,7 @@ public class TFCColdSweat {
 
     //TODO: Duplicate test event.
     @SubscribeEvent
-    public static void onUseItem(LivingEntityUseItemEvent.Finish event) {
+    public void onUseItem(LivingEntityUseItemEvent.Finish event) {
         System.out.println("event fired");
         if (event.getEntity() instanceof Player player && event.getItem().is(ModItems.FILLED_WATERSKIN)) {
             IPlayerInfo.get(player).addThirst(20f);
