@@ -6,7 +6,7 @@
   ],
   "key": {
     "A": {
-      "tag": "tfc:high_quality_cloth"
+      "item": "tfc:wool_cloth"
     },
     "B": {
       "tag": "c:leathers"
