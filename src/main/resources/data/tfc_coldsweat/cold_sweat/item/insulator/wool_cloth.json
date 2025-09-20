@@ -1,7 +1,8 @@
 {
   "type": "item",
   "insulation": {
-    "cold": 4
+    "cold": 4,
+    "heat": 0
   },
   "item": {
     "items": [
