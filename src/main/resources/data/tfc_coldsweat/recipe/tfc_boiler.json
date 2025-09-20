@@ -7,10 +7,10 @@
   ],
   "key": {
     "C": {
-      "tag": "tfc:rock/smooth"
+      "tag": "c:stones/smooth"
     },
     "P": {
-      "tag": "tfc:rock/raw"
+      "tag": "c:stones/raw"
     }
   },
   "result": {

@@ -1,20 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "AB ",
-    "AB ",
-    "ABB"
+    "A A",
+    "BBB"
   ],
   "key": {
     "A": {
-      "tag": "c:dusts/redstone"
+      "tag": "tfc:high_quality_cloth"
     },
     "B": {
-      "tag": "minecraft:terracotta"
+      "tag": "c:leathers"
     }
   },
   "result": {
-    "id": "cold_sweat:thermolith",
+    "id": "cold_sweat:minecart_insulation",
     "count": 1
   }
 }
