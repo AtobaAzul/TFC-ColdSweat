@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import com.momosoftworks.coldsweat.core.init.ModItems;
 import net.dries007.tfc.common.player.IPlayerInfo;
 import net.minecraft.world.entity.player.Player;
+import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -28,22 +29,7 @@ public class TFCColdSweat {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (TFCColdSweat) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
-        NeoForge.EVENT_BUS.register(this);
-
-        EventListener.init(NeoForge.EVENT_BUS);
-    }
-
-    //TODO: Duplicate test event.
-    @SubscribeEvent
-    public void onUseItem(LivingEntityUseItemEvent.Finish event) {
-        System.out.println("event fired");
-        if (event.getEntity() instanceof Player player && event.getItem().is(ModItems.FILLED_WATERSKIN)) {
-            IPlayerInfo.get(player).addThirst(20f);
-        }
+        NeoForge.EVENT_BUS.register(EventListener.class);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

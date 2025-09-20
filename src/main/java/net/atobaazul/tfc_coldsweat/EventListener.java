@@ -32,11 +32,6 @@ public class EventListener {
     public static final TempModifier TFCSeasonModifier = new ClimateTempModifier();
     public static final TempModifier ItemTempModifier = new ItemHeatTempModifier();
 
-    public static void init(final IEventBus eventBus) {
-        // Register all static @SubscribeEvent annotated event methods
-        eventBus.register(EventListener.class);
-    }
-
     //scale grace effect duration with temperature at spawn.
     private static double getSeasonalGraceDuration(Level level, Player player) {
         int baseDuration = ConfigSettings.GRACE_LENGTH.get();
@@ -62,7 +57,7 @@ public class EventListener {
     }
 
     @SubscribeEvent
-    public void onUseItem(LivingEntityUseItemEvent.Finish event) {
+    public static void onUseItem(LivingEntityUseItemEvent.Finish event) {
         System.out.println("event fired");
         if (event.getEntity() instanceof Player player && event.getItem().is(ModItems.FILLED_WATERSKIN)) {
             IPlayerInfo.get(player).addThirst(20f);
