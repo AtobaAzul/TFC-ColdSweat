@@ -1,17 +1,11 @@
 package net.atobaazul.tfc_coldsweat;
 
 import com.mojang.logging.LogUtils;
-import com.momosoftworks.coldsweat.core.init.ModItems;
-import net.dries007.tfc.common.player.IPlayerInfo;
-import net.minecraft.world.entity.player.Player;
-import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
