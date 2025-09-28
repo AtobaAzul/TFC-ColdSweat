@@ -12,12 +12,4 @@ public class WoolClothingArmorItem extends ArmorItem {
         super(material, type, properties);
     }
 
-    @Override
-    public void verifyComponentsAfterLoad(ItemStack stack)
-    {
-        if (!stack.has(DataComponents.DYED_COLOR))
-        {
-            stack.set(DataComponents.DYED_COLOR, new DyedItemColor(0xFFFFFF, false));
-        }
-    }
 }

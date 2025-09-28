@@ -40,7 +40,7 @@ public class TFCColdSweat {
     }
 
     private void registerColorHandler(RegisterColorHandlersEvent.Item event) {
-        event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : DyedItemColor.getOrDefault(stack, 16383998),
+        event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : DyedItemColor.getOrDefault(stack, 0xFFFFFFFF),
                 TFCColdSweatItems.WOOL_LEGGINGS, TFCColdSweatItems.WOOL_CHESTPLATE, TFCColdSweatItems.WOOL_HELMET);
     }
 }
