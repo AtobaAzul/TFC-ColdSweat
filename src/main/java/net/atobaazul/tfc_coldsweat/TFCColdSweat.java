@@ -1,10 +1,15 @@
 package net.atobaazul.tfc_coldsweat;
 
 import com.mojang.logging.LogUtils;
+import net.atobaazul.tfc_coldsweat.common.ModArmorMaterials;
+import net.atobaazul.tfc_coldsweat.common.TFCColdSweatItems;
+import net.atobaazul.tfc_coldsweat.datagen.DataGenerators;
+import net.minecraft.world.item.component.DyedItemColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
@@ -24,8 +29,18 @@ public class TFCColdSweat {
         modEventBus.addListener(this::commonSetup);
 
         NeoForge.EVENT_BUS.register(EventListener.class);
+
+        TFCColdSweatItems.ITEMS.register(modEventBus);
+        ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
+
+        modEventBus.addListener(this::registerColorHandler);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
+    }
+
+    private void registerColorHandler(RegisterColorHandlersEvent.Item event) {
+        event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : DyedItemColor.getOrDefault(stack, 16383998),
+                TFCColdSweatItems.WOOL_LEGGINGS, TFCColdSweatItems.WOOL_CHESTPLATE, TFCColdSweatItems.WOOL_HELMET);
     }
 }
