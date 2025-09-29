@@ -1,15 +1,12 @@
-package net.atobaazul.tfc_coldsweat.common;
+package net.atobaazul.tfc_coldsweat.common.item;
 
 import net.minecraft.core.Holder;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.component.DyedItemColor;
 
+//Not really used but I'm keeping it in case I want to do anything custom.
 public class WoolClothingArmorItem extends ArmorItem {
     public WoolClothingArmorItem(Holder<ArmorMaterial> material, Type type, Properties properties) {
         super(material, type, properties);
     }
-
 }

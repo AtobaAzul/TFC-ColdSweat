@@ -21,6 +21,12 @@ public class TFCColdSweatItemModelProvider extends ItemModelProvider {
         dyeableItem(TFCColdSweatItems.WOOL_HELMET);
         dyeableItem(TFCColdSweatItems.WOOL_CHESTPLATE);
         dyeableItem(TFCColdSweatItems.WOOL_LEGGINGS);
+        dyeableItem(TFCColdSweatItems.SILK_HELMET);
+        dyeableItem(TFCColdSweatItems.SILK_CHESTPLATE);
+        dyeableItem(TFCColdSweatItems.SILK_LEGGINGS);
+        dyeableItem(TFCColdSweatItems.BURLAP_HELMET);
+        dyeableItem(TFCColdSweatItems.BURLAP_CHESTPLATE);
+        dyeableItem(TFCColdSweatItems.BURLAP_LEGGINGS);
     }
 
     private ItemModelBuilder simpleItem(DeferredItem<Item> item) {

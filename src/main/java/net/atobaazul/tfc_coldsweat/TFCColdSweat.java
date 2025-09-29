@@ -1,9 +1,9 @@
 package net.atobaazul.tfc_coldsweat;
 
 import com.mojang.logging.LogUtils;
-import net.atobaazul.tfc_coldsweat.common.ModArmorMaterials;
 import net.atobaazul.tfc_coldsweat.common.TFCColdSweatItems;
-import net.atobaazul.tfc_coldsweat.datagen.DataGenerators;
+import net.atobaazul.tfc_coldsweat.common.armor_material.ModArmorMaterials;
+import net.atobaazul.tfc_coldsweat.events.Events;
 import net.minecraft.world.item.component.DyedItemColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -21,14 +21,13 @@ public class TFCColdSweat {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-
     // The constructor for the mod class is the first code that is run when your mod is loaded.
     // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
     public TFCColdSweat(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
-        NeoForge.EVENT_BUS.register(EventListener.class);
+        NeoForge.EVENT_BUS.register(Events.class);
 
         TFCColdSweatItems.ITEMS.register(modEventBus);
         ModArmorMaterials.ARMOR_MATERIALS.register(modEventBus);
@@ -40,7 +39,8 @@ public class TFCColdSweat {
     }
 
     private void registerColorHandler(RegisterColorHandlersEvent.Item event) {
-        event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : DyedItemColor.getOrDefault(stack, 0xFFFFFFFF),
-                TFCColdSweatItems.WOOL_LEGGINGS, TFCColdSweatItems.WOOL_CHESTPLATE, TFCColdSweatItems.WOOL_HELMET);
+        event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : DyedItemColor.getOrDefault(stack, 0xFFFFFFFF), TFCColdSweatItems.WOOL_LEGGINGS, TFCColdSweatItems.WOOL_CHESTPLATE, TFCColdSweatItems.WOOL_HELMET, TFCColdSweatItems.SILK_HELMET, TFCColdSweatItems.SILK_CHESTPLATE, TFCColdSweatItems.SILK_LEGGINGS);
+        event.register((stack, tintIndex) -> tintIndex > 0 ? -1 : DyedItemColor.getOrDefault(stack, 0xFFFFFFFF), TFCColdSweatItems.BURLAP_CHESTPLATE, TFCColdSweatItems.BURLAP_LEGGINGS, TFCColdSweatItems.BURLAP_HELMET);
     }
+
 }

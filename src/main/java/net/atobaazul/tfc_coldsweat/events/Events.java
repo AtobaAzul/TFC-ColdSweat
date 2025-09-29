@@ -1,4 +1,4 @@
-package net.atobaazul.tfc_coldsweat;
+package net.atobaazul.tfc_coldsweat.events;
 
 import com.momosoftworks.coldsweat.api.event.core.init.DefaultTempModifiersEvent;
 import com.momosoftworks.coldsweat.api.event.core.registry.BlockTempRegisterEvent;
@@ -13,6 +13,8 @@ import com.momosoftworks.coldsweat.config.ConfigSettings;
 import com.momosoftworks.coldsweat.core.init.ModEffects;
 import com.momosoftworks.coldsweat.core.init.ModItems;
 import com.momosoftworks.coldsweat.util.world.WorldHelper;
+import net.atobaazul.tfc_coldsweat.CompatManager;
+import net.atobaazul.tfc_coldsweat.TFCColdSweat;
 import net.atobaazul.tfc_coldsweat.temperature.block.*;
 import net.atobaazul.tfc_coldsweat.temperature.modifier.ClimateTempModifier;
 import net.atobaazul.tfc_coldsweat.temperature.modifier.ItemHeatTempModifier;
@@ -20,16 +22,14 @@ import net.dries007.tfc.common.player.IPlayerInfo;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.component.DyedItemColor;
 import net.minecraft.world.level.Level;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.event.entity.EntityJoinLevelEvent;
 import net.neoforged.neoforge.event.entity.living.LivingEntityUseItemEvent;
 
 @EventBusSubscriber
-public class EventListener {
+public class Events {
     public static final TempModifier TFCSeasonModifier = new ClimateTempModifier();
     public static final TempModifier ItemTempModifier = new ItemHeatTempModifier();
 

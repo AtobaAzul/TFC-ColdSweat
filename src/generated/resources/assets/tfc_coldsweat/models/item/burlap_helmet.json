@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "tfc_coldsweat:item/burlap_helmet",
+    "layer1": "tfc_coldsweat:item/burlap_helmet_overlay"
+  }
+}

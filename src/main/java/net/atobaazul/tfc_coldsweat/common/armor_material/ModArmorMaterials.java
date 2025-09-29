@@ -1,4 +1,4 @@
-package net.atobaazul.tfc_coldsweat.common;
+package net.atobaazul.tfc_coldsweat.common.armor_material;
 
 import net.atobaazul.tfc_coldsweat.TFCColdSweat;
 import net.dries007.tfc.common.items.TFCItems;
