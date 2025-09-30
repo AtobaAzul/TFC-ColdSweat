@@ -1,0 +1,12 @@
+{
+  "type": "armor",
+  "insulation": {
+    "value": 13,
+    "adapt_speed": 0.0085
+  },
+  "item": {
+    "items": [
+      "tfc_coldsweat:silk_helmet"
+    ]
+  }
+}

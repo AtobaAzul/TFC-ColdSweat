@@ -1,0 +1,12 @@
+{
+  "type": "armor",
+  "insulation": {
+    "cold": 6,
+    "heat": 6
+  },
+  "item": {
+    "items": [
+      "tfc_coldsweat:burlap_helmet"
+    ]
+  }
+}

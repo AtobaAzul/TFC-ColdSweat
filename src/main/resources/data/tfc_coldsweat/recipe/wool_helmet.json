@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABA",
+    "B B"
+  ],
+  "key": {
+    "A": {
+      "item": "tfc:wool_cloth"
+    },
+    "B": {
+      "tag": "c:strings"
+    }
+  },
+  "result": {
+    "id": "tfc_coldsweat:wool_helmet",
+    "count": 1
+  }
+}

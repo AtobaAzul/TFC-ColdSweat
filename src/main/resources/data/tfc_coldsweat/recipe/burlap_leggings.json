@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BAB",
+    "A A",
+    "B B"
+  ],
+  "key": {
+    "A": {
+      "item": "tfc:wool_cloth"
+    },
+    "B": [
+      {
+        "item": "tfc:jute_fiber"
+      },
+      {
+        "tag": "c:strings"
+      }
+    ]
+  },
+  "result": {
+    "id": "tfc_coldsweat:burlap_leggings",
+    "count": 1
+  }
+}

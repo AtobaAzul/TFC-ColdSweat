@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "B B",
+    "AAA",
+    "BAB"
+  ],
+  "key": {
+    "A": {
+      "item": "tfc:silk_cloth"
+    },
+    "B": {
+      "tag": "c:strings"
+    }
+  },
+  "result": {
+    "id": "tfc_coldsweat:silk_chestplate",
+    "count": 1
+  }
+}

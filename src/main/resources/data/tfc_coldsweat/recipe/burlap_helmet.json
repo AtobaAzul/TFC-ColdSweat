@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ABA",
+    "B B"
+  ],
+  "key": {
+    "A": {
+      "item": "tfc:burlap_cloth"
+    },
+    "B": [
+      {
+        "item": "tfc:jute_fiber"
+      },
+      {
+        "tag": "c:strings"
+      }
+    ]
+  },
+  "result": {
+    "id": "tfc_coldsweat:burlap_helmet",
+    "count": 1
+  }
+}
