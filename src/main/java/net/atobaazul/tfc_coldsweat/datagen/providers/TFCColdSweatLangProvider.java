@@ -23,6 +23,6 @@ public class TFCColdSweatLangProvider extends LanguageProvider {
 
         this.addItem(TFCColdSweatItems.SILK_CHESTPLATE, "Silk Shirt");
         this.addItem(TFCColdSweatItems.SILK_HELMET, "Silk Hat");
-        this.addItem(TFCColdSweatItems.SILK_LEGGINGS, "Silk Pants");
+        this.addItem(TFCColdSweatItems.SILK_LEGGINGS, "Silk Shorts");
     }
 }
