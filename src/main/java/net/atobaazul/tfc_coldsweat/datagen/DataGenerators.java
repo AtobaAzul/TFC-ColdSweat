@@ -3,6 +3,7 @@ package net.atobaazul.tfc_coldsweat.datagen;
 import net.atobaazul.tfc_coldsweat.datagen.providers.TFCColdSweatBlockTagProvider;
 import net.atobaazul.tfc_coldsweat.datagen.providers.TFCColdSweatItemModelProvider;
 import net.atobaazul.tfc_coldsweat.datagen.providers.TFCColdSweatItemTagsProvider;
+import net.atobaazul.tfc_coldsweat.datagen.providers.TFCColdSweatLangProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -26,5 +27,6 @@ public class DataGenerators {
 
         generator.addProvider(event.includeServer(), new TFCColdSweatItemTagsProvider(packOutput, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
         generator.addProvider(event.includeClient(), new TFCColdSweatItemModelProvider(packOutput, existingFileHelper));
+        generator.addProvider(event.includeClient(), new TFCColdSweatLangProvider(packOutput));
     }
 }
