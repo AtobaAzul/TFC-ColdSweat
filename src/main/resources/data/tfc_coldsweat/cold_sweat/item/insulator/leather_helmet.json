@@ -1,0 +1,12 @@
+{
+  "type": "armor",
+  "insulation": {
+    "cold": 2,
+    "heat": 8
+  },
+  "item": {
+    "items": [
+      "minecraft:leather_helmet"
+    ]
+  }
+}

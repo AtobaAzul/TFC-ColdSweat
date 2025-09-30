@@ -1,0 +1,12 @@
+{
+  "type": "armor",
+  "insulation": {
+    "cold": 4,
+    "heat": 10
+  },
+  "item": {
+    "items": [
+      "minecraft:leather_chestplate"
+    ]
+  }
+}

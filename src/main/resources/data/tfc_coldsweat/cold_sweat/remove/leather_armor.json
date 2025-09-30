@@ -1,0 +1,53 @@
+{
+  "registry": "cold_sweat:item/insulator",
+  "config_type": [
+    "toml"
+  ],
+  "matches": [
+    {
+      "item": {
+        "items": {
+          "require": [
+            "minecraft:leather_helmet"
+          ]
+        }
+      }
+    },
+    {
+      "item": {
+        "items": {
+          "require": [
+            "minecraft:leather_chestplate"
+          ]
+        }
+      }
+    },
+    {
+      "item": {
+        "items": {
+          "require": [
+            "minecraft:leather_leggings"
+          ]
+        }
+      }
+    },
+    {
+      "item": {
+        "items": {
+          "require": [
+            "minecraft:leather_boots"
+          ]
+        }
+      }
+    },
+    {
+      "item": {
+        "items": {
+          "require": [
+            "minecraft:leather"
+          ]
+        }
+      }
+    }
+  ]
+}

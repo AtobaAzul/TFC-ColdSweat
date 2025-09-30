@@ -1,0 +1,12 @@
+{
+  "type": "armor",
+  "insulation": {
+    "cold": 3,
+    "heat": 9
+  },
+  "item": {
+    "items": [
+      "minecraft:leather_leggings"
+    ]
+  }
+}
