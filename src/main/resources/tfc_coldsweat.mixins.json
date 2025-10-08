@@ -3,7 +3,8 @@
   "package": "net.atobaazul.tfc_coldsweat.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "PlayerInfoMixin"
+    "PlayerInfoMixin",
+    "WorldHelperMixin"
   ],
   "injectors": {
     "defaultRequire": 1
