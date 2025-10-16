@@ -1,6 +1,9 @@
 {
-  "required_mods": [
-    "firmalife"
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "firmalife"
+    }
   ],
   "type": "hearth",
   "fuel": -72,
