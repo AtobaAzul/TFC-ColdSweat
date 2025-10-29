@@ -101,6 +101,8 @@ public class Events {
             event.register(new TFCLampBlockTemp());
             event.register(new FluidLoggableBlockTemp());
             event.register(new FireBoxBlockTemp());
+            event.register(new StoveBlockTemp());
+
         }
     }
 
