@@ -109,11 +109,11 @@ dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
     //JEI
-    implementation "curse.maven:jei-238222:6829086"
+    implementation "curse.maven:jei-238222:7129287"
 
     //TFC
     implementation "curse.maven:patchouli-306770:6842247"
-    implementation "curse.maven:terrafirmacraft-302973:7010707"
+    implementation "curse.maven:terrafirmacraft-302973:7150812"
 
     //Cold Sweat
     implementation "curse.maven:cold-sweat-506194:6991377"
