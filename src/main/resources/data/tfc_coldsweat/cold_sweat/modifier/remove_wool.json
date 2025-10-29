@@ -1,0 +1,24 @@
+{
+  "registry": "cold_sweat:item/insulator",
+  "config_type": [
+    "toml"
+  ],
+  "matches": [
+    {
+      "item": {
+        "items": {
+          "require": {
+            "cs:contains_any": [
+              "#minecraft:wool"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "operations": [
+    {
+      "type": "disable"
+    }
+  ]
+}
