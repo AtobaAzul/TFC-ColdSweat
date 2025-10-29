@@ -18,6 +18,7 @@ import net.atobaazul.tfc_coldsweat.TFCColdSweat;
 import net.atobaazul.tfc_coldsweat.temperature.block.*;
 import net.atobaazul.tfc_coldsweat.temperature.modifier.ClimateTempModifier;
 import net.atobaazul.tfc_coldsweat.temperature.modifier.ItemHeatTempModifier;
+import net.dries007.tfc.common.component.heat.IHeat;
 import net.dries007.tfc.common.player.IPlayerInfo;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -86,22 +87,17 @@ public class Events {
     @SubscribeEvent
     public static void registerBlockTemps(BlockTempRegisterEvent event) {
         if (CompatManager.TFC_ENABLED != null) {
-            event.register(new BlastFurnaceBlockTemp());
             event.register(new BloomeryBlockTemp());
             event.register(new CharcoalForgeBlockTemp());
-            event.register(new FirepitBlockTemp());
-            event.register(new GrillBlockTemp());
-            event.register(new PotBlockTemp());
             event.register(new SpringWaterBlockTemp());
             event.register(new TFCTorchBlockTemp());
             event.register(new TFCMagmaBlockTemp());
             event.register(new SeaIceBlockTemp());
-            event.register(new CrucibleBlockTemp());
             event.register(new TFCCandleBlockTemp());
             event.register(new TFCLampBlockTemp());
             event.register(new FluidLoggableBlockTemp());
-            event.register(new FireBoxBlockTemp());
-            event.register(new StoveBlockTemp());
+            event.register(new IHeatableBlockTemp());
+
 
         }
     }
