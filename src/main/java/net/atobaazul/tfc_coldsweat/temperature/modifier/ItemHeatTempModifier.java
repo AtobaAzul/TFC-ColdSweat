@@ -9,12 +9,14 @@ import net.minecraft.world.entity.player.Player;
 import java.util.function.Function;
 
 public class ItemHeatTempModifier extends TempModifier {
+    float totalHeat;
+    float itemNumber;
+    double itemTempScale = 0.025;
 
     @Override
     protected Function<Double, Double> calculate(LivingEntity entity, Temperature.Trait trait) {
-        float[] totalHeat = {0};
-        final float[] itemNumber = {0};
-        double itemTempScale = 0.025;
+        totalHeat = 0;
+        itemNumber = 0;
         //TODO: Re-add hot or not integration if that comes to 1.21
         double heatMultiplier = 1; //entity.getOffhandItem().is(insulatingTag) ? 1 : 0.5;
 
@@ -22,16 +24,17 @@ public class ItemHeatTempModifier extends TempModifier {
             ((Player) entity).getInventory().items.forEach(item -> {
                 float itemTemp = HeatCapability.getTemperature(item);
                 if (itemTemp >= 480f) {
-                    itemNumber[0] = itemNumber[0] + 1; //Diminishing returns
-                    totalHeat[0] = (float) (totalHeat[0] + Temperature.convert(itemTemp * itemTempScale, Temperature.Units.C, Temperature.Units.MC, false) / Math.sqrt(itemNumber[0]));
-                    //cap temp at 2 mc units (50ºC) so you don't get cremated if you hold too many ingots.
-                    if (totalHeat[0] > 2) {
-                        totalHeat[0] = 2;
-                    }
+                    //Diminishing returns
+                    itemNumber = itemNumber + 1;
+                    totalHeat = (float) (totalHeat + Temperature.convert(itemTemp * itemTempScale, Temperature.Units.C, Temperature.Units.MC, false) / Math.sqrt(itemNumber));
 
+                    //cap temp at 2 mc units (50ºC) so you don't get cremated if you hold too many ingots.
+                    if (totalHeat > 2) {
+                        totalHeat = 2;
+                    }
                 }
             });
         }
-        return temp -> temp + (totalHeat[0] * heatMultiplier);
+        return temp -> temp + (totalHeat * heatMultiplier);
     }
 }
