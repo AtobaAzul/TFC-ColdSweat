@@ -2,10 +2,14 @@ package net.atobaazul.tfc_coldsweat.mixin;
 
 
 import com.momosoftworks.coldsweat.util.world.WorldHelper;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.util.tracker.WeatherHelpers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -17,7 +21,16 @@ import static com.momosoftworks.coldsweat.util.world.WorldHelper.canSeeSky;
 public class WorldHelperMixin {
     @Inject(method = "isRainingAt", at = @At("HEAD"), remap = false, cancellable = true)
     private static void tfc_coldsweat$isRainingAt(Level level, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(WeatherHelpers.getPrecipitationAt(level, pos, Biome.Precipitation.NONE) == Biome.Precipitation.RAIN
-                && canSeeSky(level, pos, level.getMaxBuildHeight()));
+        cir.setReturnValue(WeatherHelpers.getPrecipitationAt(level, pos, Biome.Precipitation.NONE) == Biome.Precipitation.RAIN && canSeeSky(level, pos, level.getMaxBuildHeight()));
+    }
+
+    @Inject(method = "shouldMelt", at = @At("HEAD"), remap = false, cancellable = true)
+    private static void tfc_coldsweat$shouldMelt(LevelAccessor levelReader, BlockPos pos, boolean mustBeAtEdge, CallbackInfoReturnable<Boolean> cir) {
+        if (pos.getY() >= levelReader.getMinBuildHeight() && pos.getY() < levelReader.getMaxBuildHeight() && levelReader instanceof ServerLevel serverLevel) {
+            BlockState state = serverLevel.getBlockState(pos);
+            if (state.is(TFCBlocks.SEA_ICE.get())) {
+                cir.setReturnValue(false);
+            }
+        }
     }
 }
