@@ -17,11 +17,15 @@ public class HotItemsTempModifier extends TempModifier {
     //For some reason requiring hotornot in the gradle breaks, so we'll just create this tag here.
     TagKey<Item> insulatingTag = TagKey.create(BuiltInRegistries.ITEM.key(), new ResourceLocation("tfchotornot", "insulating"));
 
+    float totalHeat;
+    float itemNumber;
+    double itemTempScale = 0.025;
+
     @Override
     protected Function<Double, Double> calculate(LivingEntity entity, Temperature.Trait trait) {
-        final float[] totalHeat = {0};
-        final float[] itemNumber = {0};
-        double itemTempScale = 0.025;
+        totalHeat = 0;
+        itemNumber = 0;
+
         double heatMultiplier = entity.getOffhandItem().is(insulatingTag) ? 1 : 0.5;
 
         if (entity instanceof Player) {
@@ -34,15 +38,15 @@ public class HotItemsTempModifier extends TempModifier {
                     Dividing by 10 (0.1x) gives roughly a range between 4.8 and 16 - which is fine for one item, but too much for several.
                     So diving 20 (0.05x) is enough to make individual items noticeable, and many hot items dangerous, but not a death sentence
                     */
-                    itemNumber[0] = itemNumber[0] + 1; //Diminishing returns
-                    totalHeat[0] = (float) (totalHeat[0] + Temperature.convert(itemTemp * itemTempScale, Temperature.Units.C, Temperature.Units.MC, false) / Math.sqrt(itemNumber[0]));
+                    itemNumber++; //Diminishing returns
+                    totalHeat = (float) (totalHeat + Temperature.convert(itemTemp * itemTempScale, Temperature.Units.C, Temperature.Units.MC, false) / Math.sqrt(itemNumber));
                     //cap temp at 2 mc units (50ºC) so you don't get cremated if you hold too many ingots.
-                    if (totalHeat[0] > 2) {
-                        totalHeat[0] = 2;
+                    if (totalHeat > 2) {
+                        totalHeat = 2;
                     }
                 }
             });
         }
-        return temp -> temp + (totalHeat[0] * heatMultiplier);
+        return temp -> temp + (totalHeat * heatMultiplier);
     }
 }
