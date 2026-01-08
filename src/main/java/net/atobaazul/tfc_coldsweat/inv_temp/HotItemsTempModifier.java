@@ -39,7 +39,7 @@ public class HotItemsTempModifier extends TempModifier {
                     So diving 20 (0.05x) is enough to make individual items noticeable, and many hot items dangerous, but not a death sentence
                     */
                     itemNumber++; //Diminishing returns
-                    totalHeat = (float) (totalHeat + Temperature.convert(itemTemp * itemTempScale, Temperature.Units.C, Temperature.Units.MC, false) / Math.sqrt(itemNumber));
+                    totalHeat = (float) (totalHeat + Temperature.convert(itemTemp * itemTempScale * item.getCount(), Temperature.Units.C, Temperature.Units.MC, false) / Math.sqrt(itemNumber));
                     //cap temp at 2 mc units (50ºC) so you don't get cremated if you hold too many ingots.
                     if (totalHeat > 2) {
                         totalHeat = 2;
