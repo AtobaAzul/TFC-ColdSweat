@@ -26,7 +26,7 @@ public class ItemHeatTempModifier extends TempModifier {
                 if (itemTemp >= 480f) {
                     //Diminishing returns
                     itemNumber = itemNumber + 1;
-                    totalHeat = (float) (totalHeat + Temperature.convert(itemTemp * itemTempScale, Temperature.Units.C, Temperature.Units.MC, false) / Math.sqrt(itemNumber));
+                    totalHeat = (float) (totalHeat + Temperature.convert(itemTemp * itemTempScale * item.getCount(), Temperature.Units.C, Temperature.Units.MC, false) / Math.sqrt(itemNumber));
 
                     //cap temp at 2 mc units (50ºC) so you don't get cremated if you hold too many ingots.
                     if (totalHeat > 2) {
@@ -35,6 +35,7 @@ public class ItemHeatTempModifier extends TempModifier {
                 }
             });
         }
+
         return temp -> temp + (totalHeat * heatMultiplier);
     }
 }
