@@ -63,7 +63,8 @@ public class EventListener {
 
                 event.getModifiers(Temperature.Trait.WORLD).removeIf(modifier -> modifier instanceof BiomeTempModifier ||
                         modifier instanceof CaveBiomeTempModifier ||
-                        modifier instanceof ElevationTempModifier);
+                        modifier instanceof ElevationTempModifier ||
+                        modifier instanceof ShadeTempModifier);
             }
         }
     }
