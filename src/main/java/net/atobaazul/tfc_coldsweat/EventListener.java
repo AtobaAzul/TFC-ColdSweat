@@ -4,8 +4,9 @@ import com.momosoftworks.coldsweat.api.event.core.init.DefaultTempModifiersEvent
 import com.momosoftworks.coldsweat.api.event.core.registry.BlockTempRegisterEvent;
 import com.momosoftworks.coldsweat.api.event.core.registry.TempModifierRegisterEvent;
 import com.momosoftworks.coldsweat.api.temperature.modifier.*;
-import com.momosoftworks.coldsweat.api.util.Placement;
 import com.momosoftworks.coldsweat.api.util.Temperature;
+import com.momosoftworks.coldsweat.api.util.placement.Matcher;
+import com.momosoftworks.coldsweat.api.util.placement.Placement;
 import com.momosoftworks.coldsweat.config.ConfigSettings;
 import com.momosoftworks.coldsweat.util.registries.ModEffects;
 import com.momosoftworks.coldsweat.util.world.WorldHelper;
@@ -58,8 +59,8 @@ public class EventListener {
         if (event.getEntity() instanceof Player) {
             if (CompatManager.TFC_ENABLED != null) {
 
-                event.addModifier(Temperature.Trait.WORLD, TFCSeasonModifier, Placement.Duplicates.BY_CLASS, Placement.AFTER_LAST );
-                event.addModifier(Temperature.Trait.WORLD, new HotItemsTempModifier(), Placement.Duplicates.BY_CLASS, Placement.AFTER_LAST );
+                event.addModifier(Temperature.Trait.WORLD, TFCSeasonModifier, Placement.LAST.noDuplicates(Matcher.SAME_CLASS));
+                event.addModifier(Temperature.Trait.CORE, new HotItemsTempModifier(), Placement.LAST.noDuplicates(Matcher.SAME_CLASS));
 
                 event.getModifiers(Temperature.Trait.WORLD).removeIf(modifier -> modifier instanceof BiomeTempModifier ||
                         modifier instanceof CaveBiomeTempModifier ||
@@ -101,9 +102,9 @@ public class EventListener {
     @SubscribeEvent
     public static void registerTempModifiers(TempModifierRegisterEvent event) {
         if (CompatManager.TFC_ENABLED != null) {
-            event.register(new ResourceLocation(TFCColdSweat.MODID, "season"), ClimateTempModifier::new);
+            event.register(new ResourceLocation(TFCColdSweat.MODID, "climate"), ClimateTempModifier::new);
             //event.register(new ResourceLocation(TFCColdSweat.MODID, "sunlight"), SunlightTempModifier::new);
-            event.register(new ResourceLocation(TFCColdSweat.MODID, "hot_items"), HotItemsTempModifier::new);
+            event.register(new ResourceLocation(TFCColdSweat.MODID, "inventory_item_heat"), HotItemsTempModifier::new);
         }
     }
 
