@@ -3,12 +3,10 @@ package net.atobaazul.tfc_coldsweat.events;
 import com.momosoftworks.coldsweat.api.event.core.init.DefaultTempModifiersEvent;
 import com.momosoftworks.coldsweat.api.event.core.registry.BlockTempRegisterEvent;
 import com.momosoftworks.coldsweat.api.event.core.registry.TempModifierRegisterEvent;
-import com.momosoftworks.coldsweat.api.temperature.modifier.BiomeTempModifier;
-import com.momosoftworks.coldsweat.api.temperature.modifier.CaveBiomeTempModifier;
-import com.momosoftworks.coldsweat.api.temperature.modifier.ElevationTempModifier;
-import com.momosoftworks.coldsweat.api.temperature.modifier.TempModifier;
-import com.momosoftworks.coldsweat.api.util.Placement;
+import com.momosoftworks.coldsweat.api.temperature.modifier.*;
 import com.momosoftworks.coldsweat.api.util.Temperature;
+import com.momosoftworks.coldsweat.api.util.placement.Matcher;
+import com.momosoftworks.coldsweat.api.util.placement.Placement;
 import com.momosoftworks.coldsweat.config.ConfigSettings;
 import com.momosoftworks.coldsweat.core.init.ModEffects;
 import com.momosoftworks.coldsweat.core.init.ModItems;
@@ -18,7 +16,6 @@ import net.atobaazul.tfc_coldsweat.TFCColdSweat;
 import net.atobaazul.tfc_coldsweat.temperature.block.*;
 import net.atobaazul.tfc_coldsweat.temperature.modifier.ClimateTempModifier;
 import net.atobaazul.tfc_coldsweat.temperature.modifier.ItemHeatTempModifier;
-import net.dries007.tfc.common.component.heat.IHeat;
 import net.dries007.tfc.common.player.IPlayerInfo;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -69,8 +66,8 @@ public class Events {
     public static void defineDefaultModifiers(DefaultTempModifiersEvent event) {
         if (event.getEntity() instanceof Player) {
             if (CompatManager.TFC_ENABLED != null) {
-                event.addModifier(Temperature.Trait.WORLD, TFCSeasonModifier, Placement.Duplicates.BY_CLASS, Placement.AFTER_LAST);
-                event.addModifier(Temperature.Trait.WORLD, ItemTempModifier, Placement.Duplicates.BY_CLASS, Placement.AFTER_LAST);
+                event.addModifier(Temperature.Trait.WORLD, TFCSeasonModifier, Placement.LAST.noDuplicates(Matcher.SAME_CLASS));
+                event.addModifier(Temperature.Trait.CORE, ItemTempModifier, Placement.LAST.noDuplicates(Matcher.SAME_CLASS));
                 event.getModifiers(Temperature.Trait.WORLD).removeIf(modifier -> modifier instanceof BiomeTempModifier || modifier instanceof CaveBiomeTempModifier || modifier instanceof ElevationTempModifier);
             }
         }
@@ -79,8 +76,8 @@ public class Events {
     @SubscribeEvent
     public static void registerTempModifiers(TempModifierRegisterEvent event) {
         if (CompatManager.TFC_ENABLED != null) {
-            event.register(ResourceLocation.fromNamespaceAndPath(TFCColdSweat.MOD_ID, "season"), ClimateTempModifier::new);
-            event.register(ResourceLocation.fromNamespaceAndPath(TFCColdSweat.MOD_ID, "hot_items"), ItemHeatTempModifier::new);
+            event.register(ResourceLocation.fromNamespaceAndPath(TFCColdSweat.MOD_ID, "climate"), ClimateTempModifier::new);
+            event.register(ResourceLocation.fromNamespaceAndPath(TFCColdSweat.MOD_ID, "inventory_item_heat"), ItemHeatTempModifier::new);
         }
     }
 
@@ -97,10 +94,6 @@ public class Events {
             event.register(new TFCLampBlockTemp());
             event.register(new FluidLoggableBlockTemp());
             event.register(new IHeatableBlockTemp());
-
-
         }
     }
-
-
 }
