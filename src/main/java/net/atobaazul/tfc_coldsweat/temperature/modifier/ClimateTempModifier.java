@@ -10,8 +10,7 @@ import java.util.function.Function;
 public class ClimateTempModifier extends TempModifier {
     @Override
     public Function<Double, Double> calculate(LivingEntity livingEntity, Temperature.Trait trait) {
-        float actual_temperature = Climate.getTemperature(livingEntity.level(), livingEntity.blockPosition());
+        float actual_temperature = Climate.getInstantTemperature(livingEntity.level(), livingEntity.blockPosition());
         return temp -> temp + Temperature.convert(actual_temperature, Temperature.Units.C, Temperature.Units.MC, true);
     }
-
 }
