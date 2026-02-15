@@ -22,11 +22,16 @@ public class TFCColdSweatMixinPlugin implements IMixinConfigPlugin {
 
     private static final Map<String, Supplier<Boolean>> CONDITIONS = ImmutableMap.of(
            // COMPAT_MIXIN_PACKAGE + "AlekishipsWorldHelperMixin", () -> modLoaded("alekiships") TODO: Re-add when alekiships comes to 1.21
-
+        COMPAT_MIXIN_PACKAGE + "WaterTempModifierMixin", () -> modNotLoaded("textile")
     );
+
 
     public static boolean modLoaded(String modId) {
         return FMLLoader.getLoadingModList().getModFileById(modId) != null;
+    }
+
+    public static boolean modNotLoaded(String modId) {
+        return FMLLoader.getLoadingModList().getModFileById(modId) == null;
     }
 
     @Override

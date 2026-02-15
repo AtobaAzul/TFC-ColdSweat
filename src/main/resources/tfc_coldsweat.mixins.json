@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "PlayerInfoMixin",
-    "WorldHelperMixin"
+    "WorldHelperMixin",
+    "compat.WaterTempModifierMixin"
   ],
   "injectors": {
     "defaultRequire": 1
