@@ -10,9 +10,10 @@
       "firmalife:food/vanilla_ice_cream",
       "firmalife:food/strawberry_ice_cream",
       "firmalife:food/chocolate_ice_cream",
+      "firmalife:food/banana_split",
       "firmalife:food/cookie_dough_ice_cream"
     ]
   },
-  "value": -10,
+  "temperature": -10,
   "duration": 600
 }

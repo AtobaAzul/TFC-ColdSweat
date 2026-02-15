@@ -1,9 +1,11 @@
-package net.atobaazul.tfc_coldsweat.temperature.block;
+package net.atobaazul.tfc_coldsweat.temperature.block.compat;
 
+import com.eerussianguy.firmalife.common.blockentities.ApplianceBlockEntity;
+import com.eerussianguy.firmalife.common.blockentities.OvenBottomBlockEntity;
+import com.eerussianguy.firmalife.common.blockentities.OvenTopBlockEntity;
 import com.momosoftworks.coldsweat.api.temperature.block_temp.BlockTemp;
 import com.momosoftworks.coldsweat.api.util.Temperature;
 import com.momosoftworks.coldsweat.util.math.CSMath;
-import net.dries007.tfc.common.blockentities.IHeatable;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,8 +14,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class IHeatableBlockTemp extends BlockTemp {
-    public IHeatableBlockTemp() { //I'm not sure if there's a way to filter blocks by their BE, so I'm just getting everything.
+public class ApplianceBlockTemp extends BlockTemp {
+    public ApplianceBlockTemp() { //I'm not sure if there's a way to filter blocks by their BE, so I'm just getting everything.
         super(BuiltInRegistries.BLOCK.stream().toArray(Block[]::new));
     }
 
@@ -21,8 +23,8 @@ public class IHeatableBlockTemp extends BlockTemp {
     public double getTemperature(Level level, LivingEntity entity, BlockState state, BlockPos pos, double distance) {
         BlockEntity be = level.getBlockEntity(pos);
 
-        if (be instanceof IHeatable heatable) {
-            return CSMath.blend(Temperature.convert(heatable.getTemperature(), Temperature.Units.C, Temperature.Units.MC, true), 0, distance, 0.5, 16) / 45;
+        if (be instanceof ApplianceBlockEntity appliance) {
+            return (CSMath.blend(Temperature.convert(appliance.getTemperature(), Temperature.Units.C, Temperature.Units.MC, true), 0, distance, 0.5, 16) / 45) * 0.125; //reduced temp scale.
         }
         return 0.0;
     }

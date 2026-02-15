@@ -117,6 +117,9 @@ dependencies {
 
     //Cold Sweat
     implementation "curse.maven:cold-sweat-506194:7492465"
+
+    //Compat: Firmalife
+    implementation "curse.maven:firmalife-453394:7602350"
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.

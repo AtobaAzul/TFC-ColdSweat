@@ -14,6 +14,8 @@ import com.momosoftworks.coldsweat.util.world.WorldHelper;
 import net.atobaazul.tfc_coldsweat.CompatManager;
 import net.atobaazul.tfc_coldsweat.TFCColdSweat;
 import net.atobaazul.tfc_coldsweat.temperature.block.*;
+import net.atobaazul.tfc_coldsweat.temperature.block.compat.ApplianceBlockTemp;
+import net.atobaazul.tfc_coldsweat.temperature.block.compat.BottomOvenBlockTemp;
 import net.atobaazul.tfc_coldsweat.temperature.modifier.ClimateTempModifier;
 import net.atobaazul.tfc_coldsweat.temperature.modifier.ItemHeatTempModifier;
 import net.dries007.tfc.common.player.IPlayerInfo;
@@ -94,6 +96,11 @@ public class Events {
             event.register(new TFCLampBlockTemp());
             event.register(new FluidLoggableBlockTemp());
             event.register(new IHeatableBlockTemp());
+        }
+
+        if (CompatManager.FIRMALIFE_ENABLED != null) {
+            event.register(new BottomOvenBlockTemp());
+            event.register(new ApplianceBlockTemp());
         }
     }
 }
