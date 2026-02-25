@@ -69,8 +69,10 @@ public class Events {
         if (event.getEntity() instanceof Player) {
             if (CompatManager.TFC_ENABLED != null) {
                 event.addModifier(Temperature.Trait.WORLD, TFCSeasonModifier, Placement.LAST.noDuplicates(Matcher.SAME_CLASS));
-                event.addModifier(Temperature.Trait.CORE, ItemTempModifier, Placement.LAST.noDuplicates(Matcher.SAME_CLASS));
+                event.addModifier(Temperature.Trait.WORLD, ItemTempModifier, Placement.LAST.noDuplicates(Matcher.SAME_CLASS));
                 event.getModifiers(Temperature.Trait.WORLD).removeIf(modifier -> modifier instanceof BiomeTempModifier || modifier instanceof CaveBiomeTempModifier || modifier instanceof ElevationTempModifier || modifier instanceof ShadeTempModifier);
+                //Fix for broken item heat trait for upgrading versions.
+                event.getModifiers(Temperature.Trait.CORE).removeIf(modifier -> modifier instanceof ItemHeatTempModifier);
             }
         }
     }
