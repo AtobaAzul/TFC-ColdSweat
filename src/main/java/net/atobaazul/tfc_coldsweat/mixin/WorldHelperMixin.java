@@ -29,7 +29,7 @@ public class WorldHelperMixin {
         cir.setReturnValue(WeatherHelpers.getPrecipitationAt(level, pos, Biome.Precipitation.NONE) == Biome.Precipitation.RAIN && canSeeSky(level, pos, level.getMaxBuildHeight()));
     }
 
-    @WrapMethod(method="isInWater")
+    @WrapMethod(method="isInWater", remap = false)
     private static boolean tfc_coldsweat$isInWater(Entity entity, Operation<Boolean> original) {
         return entity.isInFluidType(TFCFluids.SPRING_WATER.getType()) || original.call(entity);
     }
