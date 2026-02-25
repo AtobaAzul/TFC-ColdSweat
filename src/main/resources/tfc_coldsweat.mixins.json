@@ -5,7 +5,6 @@
   "mixins": [
     "PlayerInfoMixin",
     "WorldHelperMixin",
-    "compat.WaterTempModifierMixin"
   ],
   "injectors": {
     "defaultRequire": 1
