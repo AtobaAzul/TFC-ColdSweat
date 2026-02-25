@@ -150,6 +150,11 @@ dependencies {
     //implementation fg.deobf("curse.maven:tfc-hot-or-not-499096:5700590")
     //Crashes!!!!!!!BUt we still can do compat.
 
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.3"))
+    implementation(jarJar("io.github.llamalad7:mixinextras-forge:0.5.3")) {
+        jarJar.ranged(it, "[0.5.3,)")
+    }
+
 
     // Specify the version of Minecraft to use.
     // Any artifact can be supplied so long as it has a "userdev" classifier artifact and is a compatible patcher artifact.

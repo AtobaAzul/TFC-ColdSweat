@@ -68,7 +68,7 @@ side = "BOTH"
 [[dependencies.${mod_id}]]
 modId= "cold_sweat"
 mandatory = true
-versionRange = "[2.4-b06e,)"
+versionRange = "[2.4-b06f,)"
 ordering = "AFTER"
 side= "BOTH"
 
