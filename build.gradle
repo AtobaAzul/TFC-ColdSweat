@@ -113,10 +113,10 @@ dependencies {
 
     //TFC
     implementation "curse.maven:patchouli-306770:6842247"
-    implementation "curse.maven:terrafirmacraft-302973:7476548"
+    implementation "curse.maven:terrafirmacraft-302973:7875771"
 
     //Cold Sweat
-    implementation "curse.maven:cold-sweat-506194:7492465"
+    implementation "curse.maven:cold-sweat-506194:7898055"
 
     //Compat: Firmalife
     implementation "curse.maven:firmalife-453394:7602350"
