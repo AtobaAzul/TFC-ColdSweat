@@ -19,7 +19,7 @@ public class HotItemsTempModifier extends TempModifier {
 
     float totalHeat;
     float itemNumber;
-    double itemTempScale = 0.025;
+    double itemTempScale = 0.0125;
 
     @Override
     protected Function<Double, Double> calculate(LivingEntity entity, Temperature.Trait trait) {
