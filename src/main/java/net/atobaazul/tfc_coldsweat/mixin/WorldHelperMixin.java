@@ -4,11 +4,13 @@ package net.atobaazul.tfc_coldsweat.mixin;
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.momosoftworks.coldsweat.config.ConfigSettings;
+import com.momosoftworks.coldsweat.util.math.CSMath;
 import com.momosoftworks.coldsweat.util.world.WorldHelper;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.util.tracker.WeatherHelpers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
@@ -20,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static com.momosoftworks.coldsweat.util.world.WorldHelper.canSeeSky;
+import static com.momosoftworks.coldsweat.util.world.WorldHelper.*;
 
 @Mixin(WorldHelper.class)
 public class WorldHelperMixin {
@@ -44,11 +46,16 @@ public class WorldHelperMixin {
         }
     }
 
-    @WrapMethod(method = "getWaterTemperatureAt", remap= false)
+    @WrapMethod(method = "getWaterTemperatureAt", remap = false)
     private static double tfc_coldsweat$getWaterTemperatureAt(Level level, BlockPos pos, Operation<Double> original) {
+        pos = sublevelToWorld(level, pos);
+        Holder<Biome> biome = level.getBiome(pos);
+        double biomeTemp = CSMath.averagePair(getBiomeTemperatureRange(level, biome));
+
         if (level.getBlockState(pos).is(TFCBlocks.SPRING_WATER.get())) {
-            return Math.abs(ConfigSettings.DEFAULT_WATER_TEMPERATURE.get());
+            return Math.abs(getDefaultWaterTemp(biomeTemp));
         }
         return original.call(level, pos);
     }
+
 }

@@ -116,7 +116,7 @@ dependencies {
     implementation "curse.maven:terrafirmacraft-302973:7875771"
 
     //Cold Sweat
-    implementation "curse.maven:cold-sweat-506194:7898055"
+    implementation "curse.maven:cold-sweat-506194:8170896"
 
     //Compat: Firmalife
     implementation "curse.maven:firmalife-453394:7602350"
