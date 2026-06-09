@@ -8,13 +8,13 @@
   "type": "tfc:knapping",
   "knapping_type": "tfc_coldsweat:hoglin_hide",
   "pattern": [
-    "X   X",
     "XXXXX",
     "XXXXX",
-    "XXXXX",
-    "XXXXX"
+    "XX XX",
+    "XX XX",
+    "XX XX"
   ],
   "result": {
-    "item": "cold_sweat:hoglin_tunic"
+    "item": "cold_sweat:hoglin_leggings"
   }
 }
