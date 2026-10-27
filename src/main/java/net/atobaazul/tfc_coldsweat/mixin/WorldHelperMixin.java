@@ -3,11 +3,14 @@ package net.atobaazul.tfc_coldsweat.mixin;
 
 import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.momosoftworks.coldsweat.api.util.Temperature;
 import com.momosoftworks.coldsweat.config.ConfigSettings;
 import com.momosoftworks.coldsweat.util.math.CSMath;
 import com.momosoftworks.coldsweat.util.world.WorldHelper;
+import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.fluids.TFCFluids;
+import net.dries007.tfc.util.climate.Climate;
 import net.dries007.tfc.util.tracker.WeatherHelpers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -18,6 +21,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -25,7 +29,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import static com.momosoftworks.coldsweat.util.world.WorldHelper.*;
 
 @Mixin(WorldHelper.class)
-public class WorldHelperMixin {
+public abstract class WorldHelperMixin {
+
+
     @Inject(method = "isRainingAt", at = @At("HEAD"), remap = false, cancellable = true)
     private static void tfc_coldsweat$isRainingAt(Level level, BlockPos pos, CallbackInfoReturnable<Boolean> cir) {
         cir.setReturnValue(WeatherHelpers.getPrecipitationAt(level, pos, Biome.Precipitation.NONE) == Biome.Precipitation.RAIN && canSeeSky(level, pos, level.getMaxBuildHeight()));
@@ -46,16 +52,12 @@ public class WorldHelperMixin {
         }
     }
 
-    @WrapMethod(method = "getWaterTemperatureAt", remap = false)
+    @WrapMethod(method = "getWaterTemperatureDelta", remap = false)
     private static double tfc_coldsweat$getWaterTemperatureAt(Level level, BlockPos pos, Operation<Double> original) {
         pos = sublevelToWorld(level, pos);
-        Holder<Biome> biome = level.getBiome(pos);
-        double biomeTemp = CSMath.averagePair(getBiomeTemperatureRange(level, biome));
 
         if (level.getBlockState(pos).is(TFCBlocks.SPRING_WATER.get())) {
-            return Math.abs(getDefaultWaterTemp(biomeTemp));
-        }
-        return original.call(level, pos);
+            return 3;
+        } else return -0.25;
     }
-
 }
