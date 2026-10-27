@@ -42,15 +42,12 @@ public abstract class WorldHelperMixin {
         return entity.isInFluidType(((fluidType, height) -> fluidType.equals(TFCFluids.SPRING_WATER.type().get()))) || original.call(entity);
     }
 
-    @WrapMethod(method = "getWaterTemperatureAt", remap = false)
+    @WrapMethod(method = "getWaterTemperatureDelta", remap = false)
     private static double tfc_coldsweat$getWaterTemperatureAt(Level level, BlockPos pos, Operation<Double> original) {
         pos = sublevelToWorld(level, pos);
-        Holder<Biome> biome = level.getBiome(pos);
-        double biomeTemp = CSMath.averagePair(getBiomeTemperatureRange(level, biome));
 
         if (level.getBlockState(pos).is(TFCBlocks.SPRING_WATER.get())) {
-            return Math.abs(getDefaultWaterTemp(biomeTemp));
-        }
-        return original.call(level, pos);
+            return 3;
+        } else return -0.25;
     }
 }
